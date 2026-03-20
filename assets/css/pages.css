@@ -16,26 +16,48 @@
     /* ============================================================================
     1. HERO
     ============================================================================ */
-    .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    text-align:center;
-    background-image: url('../images/hero/hero-3.jpg');
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}
+        .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Video de fondo */
+    .hero__video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    /* Overlay oscuro para que el texto sea legible */
+    .hero__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+    }
 
     .hero__content {
+        position: relative;
+        z-index: 2;
         width: 100%;
         max-width: 650px;
         margin: 0 auto;
-        padding: 100px 20px 60px;   /* padding-top alto para que no tape el header fijo */
+        padding: 100px 20px 60px;
     }
 
+    /* El resto de tu CSS se mantiene igual */
     .hero__content h1 {
         font-size: 2.5rem;
         color: white;
@@ -47,13 +69,12 @@
         margin-bottom: 30px;
     }
 
-    /* Buscador del hero — input y botón en fila dentro de un div blanco redondeado */
     .search-bar--hero {
-        display: flex;                /* Input y botón en la misma fila */
+        display: flex;
         align-items: center;
         background: white;
         border-radius: 50px;
-        overflow: hidden;             /* Para que el botón respete el border-radius */
+        overflow: hidden;
         padding: 5px;
         margin-bottom: 30px;
     }
@@ -64,7 +85,7 @@
     }
 
     .search-bar--hero .search-bar__input {
-        flex: 1;                      /* Ocupa todo el espacio disponible */
+        flex: 1;
         padding: 12px 10px;
         border: none;
         outline: none;
@@ -81,24 +102,23 @@
         border-radius: 50px;
         font-size: 1rem;
         cursor: pointer;
-        white-space: nowrap;          /* Evita que el texto del botón salte de línea */
+        white-space: nowrap;
     }
 
     .search-bar--hero .search-bar__btn:hover {
         background: #c73652;
     }
 
-    /* Botones de ciudades rápidas — en fila, centrados */
     .hero__quick-cities {
         display: flex;
-        flex-wrap: wrap;              /* Si no caben en una fila, bajan a la siguiente */
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         gap: 8px;
     }
 
     .hero__quick-label {
-        color: #999;
+        color: #ccc;
         font-size: 0.9rem;
     }
 
@@ -108,13 +128,16 @@
         justify-content: center;
         gap: 8px;
         list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     .hero__quick-btn {
         padding: 5px 15px;
         border-radius: 20px;
-        border: 1px solid #666;
-        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
         color: white;
         cursor: pointer;
         font-size: 0.9rem;
@@ -125,56 +148,52 @@
         background: #e94560;
         border-color: #e94560;
     }
-
     /* ============================================================================
     2. CÓMO FUNCIONA
     ============================================================================ */
     .how-it-works {
-        background: #f5f5f5;
-        padding: 60px 0;
-        background-image: url('../images/hero/hero-5.mp4');
-        background-size: cover; 
-        background-position: center;
-        background-repeat: no-repeat;
         position: relative;
+        overflow: hidden;
     }
 
-    .how-it-works .section__title {
-        color: #1a1a2e;               /* Oscuro porque el fondo es claro */
+    .how-it-works__video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
     }
 
-    .steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin-top: 40px;
+    .how-it-works__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 26, 46, 0.7);
+        z-index: 1;
     }
 
-    .step {
-        text-align: center;
+    .how-it-works .container {
+        position: relative;
+        z-index: 2;
     }
 
-    .step__icon {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: #1a1a2e;
-        border: 2px solid #e94560;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        margin: 0 auto 15px;
+    /* Ajustar colores para que se vean sobre el video */
+    .how-it-works .step__title {
+        color: #fff;
     }
 
-    .step__title {
-        color: #1a1a2e;
-        margin-bottom: 8px;
+    .how-it-works .step__text {
+        color: rgba(255, 255, 255, 0.85);
     }
 
-    .step__text {
-        color: #666;
-        font-size: 0.9rem;
+    .how-it-works .step__icon {
+        background: rgba(26, 26, 46, 0.8);
+        border-color: #e94560;
+        color: #fff;
     }
 
     /* ============================================================================
