@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento — LiveFinder</title>
+
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+<!-- =========================================================================
+    HEADER
+    ========================================================================= -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="header__logo">
+            Live<span class="text-accent">Finder</span>
+        </a>
+        <button class="nav__toggle" id="nav-toggle">☰</button>
+        <nav>
+            <ul class="nav__list" id="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="resultados.html">Conciertos</a></li>
+                <li><a href="ciudades.html">Ciudades</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- =========================================================================
+    DETALLE DEL EVENTO
+    JavaScript (pages.js) rellena este div con los datos del evento.
+    El id del evento llega por la URL: evento.html?id=...
+    ========================================================================= -->
+<main class="section">
+    <div class="container">
+        <!-- Enlace para volver a los resultados anteriores -->
+        <a href="javascript:history.back()" class="btn btn--outline" style="margin-bottom: 2rem; display: inline-block;">← Volver</a>
+
+        <!-- pages.js inserta aquí el HTML del evento (creado por crearDetalleEvento en ui.js) -->
+        <div id="event-detail">
+            <!-- Skeletons mientras carga -->
+            <div class="skeleton" style="height: 300px; margin-bottom: 1.5rem;"></div>
+            <div class="skeleton skeleton--text"></div>
+            <div class="skeleton skeleton--text"></div>
+            <div class="skeleton skeleton--text-short"></div>
+        </div>
+    </div>
+</main>
+
+<!-- =========================================================================
+    FOOTER
+    ========================================================================= -->
+<footer>
+    <div class="container">
+        <div>
+            <span>Live<span class="text-accent">Finder</span></span>
+            <p>© <span id="footer-year"></span></p>
+        </div>
+        <div>
+            <a href="resultados.html">Conciertos</a>
+            <a href="ciudades.html">Ciudades</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/pages.js"></script>
+
+</body>
+</html>

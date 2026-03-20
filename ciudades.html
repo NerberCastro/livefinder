@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudades — LiveFinder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="header__logo">Live<span class="text-accent">Finder</span></a>
+        <button class="nav__toggle" id="nav-toggle">☰</button>
+        <nav>
+            <ul class="nav__list" id="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="resultados.html">Conciertos</a></li>
+                <li><a href="ciudades.html" class="nav__link--active">Ciudades</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<section class="page-hero">
+    <div class="container">
+        <h1 class="section__title">Ciudades de España</h1>
+        <p class="section__subtitle">Selecciona una ciudad y descubre sus conciertos</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="cities-grid" id="cities-grid">
+
+            <a href="resultados.html?city=Madrid" class="city-card">
+                <img src="assets/images/ciudades/madrid.jpg" alt="Madrid" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Madrid</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Barcelona" class="city-card">
+                <img src="assets/images/ciudades/barcelona.jpg" alt="Barcelona" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Barcelona</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Sevilla" class="city-card">
+                <img src="assets/images/ciudades/sevilla.jpg" alt="Sevilla" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Sevilla</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Valencia" class="city-card">
+                <img src="assets/images/ciudades/valencia.jpg" alt="Valencia" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Valencia</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Bilbao" class="city-card">
+                <img src="assets/images/ciudades/bilbao.jpg" alt="Bilbao" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Bilbao</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Malaga" class="city-card">
+                <img src="assets/images/ciudades/malaga.jpg" alt="Málaga" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Málaga</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Zaragoza" class="city-card">
+                <img src="assets/images/ciudades/zaragoza.jpg" alt="Zaragoza" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Zaragoza</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Granada" class="city-card">
+                <img src="assets/images/ciudades/granada.jpg" alt="Granada" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Granada</h3>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div>
+            <span>Live<span class="text-accent">Finder</span></span>
+            <p>© <span id="footer-year"></span></p>
+        </div>
+        <div>
+            <a href="resultados.html">Conciertos</a>
+            <a href="ciudades.html">Ciudades</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/pages.js"></script>
+
+</body>
+</html>

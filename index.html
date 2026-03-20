@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveFinder — Conciertos en tu ciudad</title>
+    <meta name="description" content="Descubre conciertos cerca de ti.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+<!-- =========================================================================
+    HEADER
+    ========================================================================= -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="header__logo">
+            Live<span class="text-accent">Finder</span>
+        </a>
+        <button class="nav__toggle" id="nav-toggle">☰</button>
+        <nav>
+            <ul class="nav__list" id="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="resultados.html">Conciertos</a></li>
+                <li><a href="ciudades.html">Ciudades</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- =========================================================================
+    HERO - Sección principal con buscador
+    ========================================================================= -->
+<section class="hero">
+    <div class="container hero__content">
+        <h1>Encuentra tu <span class="text-accent">concierto</span></h1>
+        <p>Busca eventos en tu ciudad</p>
+
+        <form id="hero-search-form">
+            <div class="search-bar search-bar--hero">
+                <span class="search-bar__icon"></span>
+                <input type="search" name="city" class="search-bar__input" placeholder="¿En qué ciudad buscas conciertos?" autocomplete="off" minlength="2" maxlength="50" required>
+                <button type="submit" class="search-bar__btn">Buscar</button>
+            </div>
+        </form>
+
+        <!-- Accesos rápidos solo España -->
+        <div class="hero__quick-cities">
+            <span class="hero__quick-label">Búsquedas populares:</span>
+            <ul class="hero__quick-list">
+                <li><button class="hero__quick-btn" data-city="Madrid">Madrid</button></li>
+                <li><button class="hero__quick-btn" data-city="Barcelona">Barcelona</button></li>
+                <li><button class="hero__quick-btn" data-city="Sevilla">Sevilla</button></li>
+                <li><button class="hero__quick-btn" data-city="Valencia">Valencia</button></li>
+                <li><button class="hero__quick-btn" data-city="Bilbao">Bilbao</button></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+    CÓMO FUNCIONA
+    ========================================================================= -->
+<section class="section how-it-works">
+    <div class="container">
+        <ul class="steps">
+            <li class="step">
+                <div class="step__icon">🔍</div>
+                <h3 class="step__title">Busca</h3>
+                <p class="step__text">Escribe tu ciudad</p>
+            </li>
+            <li class="step">
+                <div class="step__icon">🎵</div>
+                <h3 class="step__title">Explora</h3>
+                <p class="step__text">Filtra por género o fecha</p>
+            </li>
+            <li class="step">
+                <div class="step__icon">🎟️</div>
+                <h3 class="step__title">Compra</h3>
+                <p class="step__text">Entradas directas sin intermediarios</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- =========================================================================
+    PRÓXIMOS EVENTOS - Se rellena con JavaScript (eventos de Madrid)
+    ========================================================================= -->
+<section class="section">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title">Próximos conciertos</h2>
+            <a href="resultados.html" class="btn btn--outline">Ver todos →</a>
+        </div>
+        <div class="grid--events" id="featured-events-grid">
+            <div class="skeleton skeleton--card"></div>
+            <div class="skeleton skeleton--card"></div>
+            <div class="skeleton skeleton--card"></div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+    CIUDADES - Solo España
+    ========================================================================= -->
+<section class="section">
+    <div class="container">
+        <h2 class="section__title text-center">Ciudades</h2>
+        <div class="cities-grid">
+
+            <a href="resultados.html?city=Madrid" class="city-card">
+                <img src="assets/images/ciudades/madrid.jpg" alt="Madrid" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Madrid</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Barcelona" class="city-card">
+                <img src="assets/images/ciudades/barcelona.jpg" alt="Barcelona" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Barcelona</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Sevilla" class="city-card">
+                <img src="assets/images/ciudades/sevilla.jpg" alt="Sevilla" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Sevilla</h3>
+                </div>
+            </a>
+
+            <a href="resultados.html?city=Valencia" class="city-card">
+                <img src="assets/images/ciudades/valencia.jpg" alt="Valencia" class="city-card__img" loading="lazy">
+                <div class="city-card__overlay"></div>
+                <div class="city-card__content">
+                    <h3 class="city-card__name">Valencia</h3>
+                </div>
+            </a>
+
+            <!-- Enlace a ver todas las ciudades -->
+            <a href="ciudades.html" class="city-card city-card--more">
+                <div class="city-card__content">
+                    <span class="city-card__more-icon">+</span>
+                    <h3 class="city-card__name">Ver más</h3>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+    CTA - Segundo buscador al final
+    ========================================================================= -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-block">
+            <h2 class="cta-block__title">¿Buscas conciertos?</h2>
+            <form id="cta-search-form">
+                <div class="search-bar search-bar--cta">
+                    <input type="search" name="city" class="search-bar__input" placeholder="Tu ciudad..." autocomplete="off" required>
+                    <button type="submit" class="search-bar__btn">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+    FOOTER
+    ========================================================================= -->
+<footer>
+    <div class="container">
+        <div>
+            <span>Live<span class="text-accent">Finder</span></span>
+            <p>© <span id="footer-year"></span></p>
+        </div>
+        <div>
+            <a href="resultados.html">Conciertos</a>
+            <a href="ciudades.html">Ciudades</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/pages.js"></script>
+
+</body>
+</html>

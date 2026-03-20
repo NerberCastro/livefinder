@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados — LiveFinder</title>
+    <meta name="description" content="Conciertos y eventos en tu ciudad.">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+<!-- =========================================================================
+    HEADER - igual que en index.html
+    ========================================================================= -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="header__logo">
+            Live<span class="text-accent">Finder</span>
+        </a>
+
+        <button class="nav__toggle" id="nav-toggle">☰</button>
+
+        <nav>
+            <ul class="nav__list" id="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="resultados.html" class="nav__link--active">Conciertos</a></li>
+                <li><a href="ciudades.html">Ciudades</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- =========================================================================
+    BUSCADOR DE RESULTADOS
+    Barra de búsqueda compacta para que el usuario cambie de ciudad
+    ========================================================================= -->
+<section class="results-search-bar">
+    <div class="container">
+        <form class="search-bar" id="results-search-form">
+            <input
+                type="search"
+                name="city"
+                class="search-bar__input"
+                placeholder="Buscar en otra ciudad..."
+                autocomplete="off"
+                required
+            >
+            <button type="submit" class="search-bar__btn">Buscar</button>
+        </form>
+    </div>
+</section>
+
+<!-- =========================================================================
+    CABECERA DE RESULTADOS
+    Muestra la ciudad buscada y el número de eventos encontrados
+    ========================================================================= -->
+<section class="section">
+    <div class="container">
+
+        <div class="results-header">
+            <!-- El span#results-city se rellena con JavaScript (pages.js) -->
+            <h1 class="section__title">Conciertos en <span id="results-city"></span></h1>
+
+            <!-- Filtros: género y fecha -->
+            <div class="results-filters">
+
+                <select id="filter-genre">
+                    <option value="">Todos los géneros</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Hip-Hop/Rap">Hip-Hop / Rap</option>
+                    <option value="Electronic">Electrónica</option>
+                    <option value="R&B">R&B</option>
+                    <option value="Latin">Latino</option>
+                    <option value="Jazz">Jazz</option>
+                </select>
+
+                <select id="filter-date">
+                    <option value="">Cualquier fecha</option>
+                    <option value="7dias">Próximos 7 días</option>
+                    <option value="30dias">Próximo mes</option>
+                    <option value="3meses">Próximos 3 meses</option>
+                </select>
+
+            </div>
+        </div>
+
+        <!-- Grid de resultados — JavaScript inserta las cards aquí -->
+        <div class="grid--events" id="results-grid">
+            <!-- Skeletons mientras cargan los datos -->
+            <div class="skeleton skeleton--card"></div>
+            <div class="skeleton skeleton--card"></div>
+            <div class="skeleton skeleton--card"></div>
+            <div class="skeleton skeleton--card"></div>
+            <div class="skeleton skeleton--card"></div>
+            <div class="skeleton skeleton--card"></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================================================
+    FOOTER
+    ========================================================================= -->
+<footer>
+    <div class="container">
+        <div>
+            <span>Live<span class="text-accent">Finder</span></span>
+            <p>© <span id="footer-year"></span></p>
+        </div>
+        <div>
+            <a href="resultados.html">Conciertos</a>
+            <a href="ciudades.html">Ciudades</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts — mismo orden que en index.html -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/filters.js"></script>
+<script src="assets/js/pages.js"></script>
+
+</body>
+</html>

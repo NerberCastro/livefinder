@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre LiveFinder</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+<!-- =========================================================================
+    HEADER
+    ========================================================================= -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="header__logo">
+            Live<span class="text-accent">Finder</span>
+        </a>
+        <button class="nav__toggle" id="nav-toggle">☰</button>
+        <nav>
+            <ul class="nav__list" id="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="resultados.html">Conciertos</a></li>
+                <li><a href="ciudades.html">Ciudades</a></li>
+                <li><a href="sobre.html" class="nav__link--active">Sobre</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- =========================================================================
+    QUÉ ES LIVEFINDER
+    ========================================================================= -->
+<section class="page-hero">
+    <div class="container">
+        <h1 class="section__title">Sobre LiveFinder</h1>
+        <p class="section__subtitle">"Encuentra, vive y disfruta"</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container about-grid">
+
+        <div>
+            <h2>¿Qué es LiveFinder?</h2>
+            <p>LiveFinder es una aplicación web que te ayuda a descubrir conciertos y eventos musicales en vivo cerca de ti. Sin registros, sin complicaciones — buscas tu ciudad y encuentras lo que hay.</p>
+            <p>Los datos vienen directamente de <strong>Ticketmaster</strong>, así que la información es real y actualizada.</p>
+        </div>
+
+        <div>
+            <h2>¿Para quién es?</h2>
+            <p>Para cualquier persona entre 18 y 45 años que no quiera perderse un concierto de su artista favorito. Especialmente pensado para España y Latinoamérica, donde otras plataformas tienen poca cobertura.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================================================
+    LO QUE NO ES
+    Para dejar claro el alcance del proyecto
+    ========================================================================= -->
+<section class="section about-not">
+    <div class="container">
+        <h2 class="section__title">Lo que LiveFinder NO es</h2>
+        <ul class="about-list">
+            <li>❌ No vendemos entradas — te llevamos a la web oficial</li>
+            <li>❌ No somos una red social musical</li>
+            <li>❌ No hacemos streaming de música</li>
+            <li>❌ No cubrimos eventos culturales generales, solo música en vivo</li>
+        </ul>
+    </div>
+</section>
+
+<!-- =========================================================================
+    TECNOLOGÍAS USADAS
+    ========================================================================= -->
+<section class="section">
+    <div class="container">
+        <h2 class="section__title">Tecnologías</h2>
+        <ul class="tech-list">
+            <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (sin frameworks)</li>
+            <li><strong>Backend:</strong> PHP + MySQL (caché de eventos)</li>
+            <li><strong>API:</strong> Ticketmaster Discovery API</li>
+            <li><strong>Entorno:</strong> XAMPP (Apache + PHP + MySQL)</li>
+        </ul>
+    </div>
+</section>
+
+<!-- =========================================================================
+    CONTACTO
+    id="contacto" para que el enlace del footer funcione (sobre.html#contacto)
+    ========================================================================= -->
+<section class="section" id="contacto">
+    <div class="container">
+        <h2 class="section__title">Contacto</h2>
+        <p>¿Tienes alguna sugerencia o encontraste un error? Escríbenos:</p>
+        <p><a href="mailto:hola@livefinder.es" class="text-accent">hola@livefinder.es</a></p>
+    </div>
+</section>
+
+<!-- =========================================================================
+    FOOTER
+    ========================================================================= -->
+<footer>
+    <div class="container">
+        <div>
+            <span>Live<span class="text-accent">Finder</span></span>
+            <p>© <span id="footer-year"></span></p>
+        </div>
+        <div>
+            <a href="resultados.html">Conciertos</a>
+            <a href="ciudades.html">Ciudades</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/pages.js"></script>
+
+</body>
+</html>
