@@ -8,7 +8,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Año actual en el footer (en todas las páginas)
-    const spanAnio = document.getElementById('footer-year');
+    const spanAnio = document.getElementById('pie-anio');
     if (spanAnio) {
         spanAnio.textContent = new Date().getFullYear();
     }
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // -------------------------------------------------------------------------
     // HOME (index.html)
     // -------------------------------------------------------------------------
-    const formHero    = document.getElementById('hero-search-form');
-    const formCta     = document.getElementById('cta-search-form');
-    const gridEventos = document.getElementById('featured-events-grid');
+    const formHero    = document.getElementById('formulario-busqueda-hero');
+    const formCta     = document.getElementById('formulario-busqueda-cta');
+    const gridEventos = document.getElementById('cuadricula-eventos-destacados');
 
     if (formHero) {
         iniciarBuscador(formHero);
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // -------------------------------------------------------------------------
     // RESULTADOS (resultados.html)
     // -------------------------------------------------------------------------
-    const gridResultados = document.getElementById('results-grid');
+    const gridResultados = document.getElementById('cuadricula-resultados');
 
     if (gridResultados) {
         const params = new URLSearchParams(window.location.search);
@@ -41,28 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (ciudad) {
             // Hay ciudad en la URL — cargamos sus eventos
-            const tituloCiudad = document.getElementById('results-city');
+            const tituloCiudad = document.getElementById('ciudad-resultados');
             if (tituloCiudad) tituloCiudad.textContent = ciudad;
 
             cargarResultados(gridResultados, ciudad);
         } else {
             // No hay ciudad — ocultamos los filtros y mostramos mensaje de búsqueda
-            const filtros = document.querySelector('.results-filters');
+            const filtros = document.querySelector('.filtros-resultados');
             if (filtros) filtros.style.display = 'none';
 
-            const tituloCiudad = document.getElementById('results-city');
+            const tituloCiudad = document.getElementById('ciudad-resultados');
             if (tituloCiudad) tituloCiudad.textContent = 'España';
 
             gridResultados.innerHTML = `
-                <div class="empty-state" style="grid-column: 1 / -1;">
-                    <p class="empty-state__icon">🎵</p>
-                    <p class="empty-state__title">¿Qué ciudad quieres explorar?</p>
-                    <p class="empty-state__text">Usa el buscador de arriba para encontrar conciertos en tu ciudad.</p>
+                <div class="estado-vacio" style="grid-column: 1 / -1;">
+                    <p class="estado-vacio__icono">🎵</p>
+                    <p class="estado-vacio__titulo">¿Qué ciudad quieres explorar?</p>
+                    <p class="estado-vacio__texto">Usa el buscador de arriba para encontrar conciertos en tu ciudad.</p>
                 </div>
             `;
         }
 
-        const formResultados = document.getElementById('results-search-form');
+        const formResultados = document.getElementById('formulario-busqueda-resultados');
         if (formResultados) iniciarBuscador(formResultados);
 
         iniciarFiltros(gridResultados);
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // -------------------------------------------------------------------------
     // DETALLE DE EVENTO (evento.html)
     // -------------------------------------------------------------------------
-    const contenedorEvento = document.getElementById('event-detail');
+    const contenedorEvento = document.getElementById('detalle-evento');
 
     if (contenedorEvento) {
         const params = new URLSearchParams(window.location.search);
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // CIUDADES (ciudades.html)
     // FIX: movido aquí dentro del DOMContentLoaded para que el HTML ya exista
     // -------------------------------------------------------------------------
-    const gridCiudades = document.getElementById('cities-grid');
+    const gridCiudades = document.getElementById('cuadricula-ciudades');
 
     if (gridCiudades) {
         const botonesFiltro = document.querySelectorAll('.cities-filter__btn');
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 boton.classList.add('active');
 
                 const region = boton.getAttribute('data-region');
-                const cards  = gridCiudades.querySelectorAll('.city-card');
+                const cards  = gridCiudades.querySelectorAll('.tarjeta-ciudad');
 
                 cards.forEach(function(card) {
                     // Si region está vacío ("Todas"), mostramos todo

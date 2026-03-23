@@ -1,4 +1,4 @@
-    /* ============================================================
+/* ============================================================
     BASE.CSS — LiveFinder
     Contenido:
     1. Reset
@@ -177,7 +177,7 @@
     padding-block: var(--space-16);
     }
 
-    .section--sm {
+    .seccion--pequena {
     padding-block: var(--space-10);
     }
 
@@ -209,24 +209,24 @@
     h2 { font-size: var(--text-xl); }
     }
 
-    .section__title {
+    .seccion__titulo {
     font-family: var(--font-heading);
     font-size: var(--text-2xl);
     font-weight: var(--fw-bold);
     margin-bottom: var(--space-2);
     }
 
-    .section__subtitle {
+    .seccion__subtitulo {
     font-size: var(--text-md);
     color: var(--color-text-muted);
     margin-bottom: var(--space-8);
     }
 
-    .text-accent {
+    .texto-acento {
     color: var(--color-accent);
     }
 
-    .text-muted {
+    .texto-suave {
     color: var(--color-text-muted);
     font-size: var(--text-sm);
     }
@@ -238,7 +238,7 @@
 
     /* --- Botones --- */
 
-    .btn {
+    .boton {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -255,48 +255,48 @@
     cursor: pointer;
     }
 
-    .btn:active {
+    .boton:active {
     transform: scale(0.97);
     }
 
     /* Botón primario — Live Red */
-    .btn--primary {
+    .boton--primario {
     background-color: var(--color-accent);
     color: var(--color-text-primary);
     }
 
-    .btn--primary:hover {
+    .boton--primario:hover {
     background-color: var(--color-accent-hover);
     box-shadow: var(--shadow-accent);
     }
 
     /* Botón secundario — contorno */
-    .btn--outline {
+    .boton--contorno {
     border: 2px solid var(--color-accent);
     color: var(--color-accent);
     }
 
-    .btn--outline:hover {
+    .boton--contorno:hover {
     background-color: var(--color-accent);
     color: var(--color-text-primary);
     }
 
     /* Botón ghost — sin fondo */
-    .btn--ghost {
+    .boton--fantasma {
     color: var(--color-text-muted);
     }
 
-    .btn--ghost:hover {
+    .boton--fantasma:hover {
     color: var(--color-text-primary);
     }
 
     /* Tamaños */
-    .btn--lg {
+    .boton--grande {
     padding: var(--space-4) var(--space-8);
     font-size: var(--text-md);
     }
 
-    .btn--sm {
+    .boton--pequeno {
     padding: var(--space-2) var(--space-4);
     font-size: var(--text-xs);
     }
@@ -321,18 +321,18 @@
     border-color: var(--color-accent);
     }
 
-    .card__image {
+    .tarjeta__imagen {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     background-color: var(--color-secondary);
     }
 
-    .card__body {
+    .tarjeta__cuerpo {
     padding: var(--space-4);
     }
 
-    .card__date {
+    .tarjeta__fecha {
     font-size: var(--text-xs);
     font-weight: var(--fw-semibold);
     color: var(--color-accent);
@@ -341,7 +341,7 @@
     margin-bottom: var(--space-2);
     }
 
-    .card__title {
+    .tarjeta__titulo {
     font-family: var(--font-heading);
     font-size: var(--text-md);
     font-weight: var(--fw-semibold);
@@ -354,7 +354,7 @@
     overflow: hidden;
     }
 
-    .card__venue {
+    .tarjeta__recinto {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
     display: flex;
@@ -362,7 +362,7 @@
     gap: var(--space-1);
     }
 
-    .card__footer {
+    .tarjeta__pie {
     padding: var(--space-3) var(--space-4);
     border-top: 1px solid var(--color-border);
     display: flex;
@@ -370,7 +370,7 @@
     justify-content: space-between;
     }
 
-    .card__city {
+    .tarjeta__ciudad {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
     font-weight: var(--fw-medium);
@@ -379,7 +379,7 @@
 
     /* --- Buscador --- */
 
-    .search-bar {
+    .buscador {
     display: flex;
     align-items: center;
     background-color: var(--color-surface);
@@ -390,11 +390,11 @@
     transition: box-shadow var(--transition-base);
     }
 
-    .search-bar:focus-within {
+    .buscador:focus-within {
     box-shadow: var(--shadow-accent);
     }
 
-    .search-bar__input {
+    .buscador__campo {
     flex: 1;
     background: transparent;
     color: var(--color-text-dark);
@@ -403,11 +403,11 @@
     padding: var(--space-2) var(--space-2);
     }
 
-    .search-bar__input::placeholder {
+    .buscador__campo::placeholder {
     color: #888;
     }
 
-    .search-bar__btn {
+    .buscador__boton {
     background-color: var(--color-accent);
     color: white;
     border-radius: var(--radius-full);
@@ -420,7 +420,7 @@
     white-space: nowrap;
     }
 
-    .search-bar__btn:hover {
+    .buscador__boton:hover {
     background-color: var(--color-accent-hover);
     box-shadow: var(--shadow-accent);
     }
@@ -428,7 +428,7 @@
 
     /* --- Badges / etiquetas --- */
 
-    .badge {
+    .etiqueta {
     display: inline-block;
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-full);
@@ -438,13 +438,13 @@
     text-transform: uppercase;
     }
 
-    .badge--accent {
+    .etiqueta--acento {
     background-color: rgba(233, 69, 96, 0.15);
     color: var(--color-accent);
     border: 1px solid rgba(233, 69, 96, 0.3);
     }
 
-    .badge--muted {
+    .etiqueta--suave {
     background-color: var(--color-border);
     color: var(--color-text-muted);
     }
@@ -452,7 +452,7 @@
 
     /* --- Skeleton loader --- */
 
-    .skeleton {
+    .esqueleto {
     background: linear-gradient(
         90deg,
         var(--color-bg-elevated) 25%,
@@ -460,22 +460,22 @@
         var(--color-bg-elevated) 75%
     );
     background-size: 200% 100%;
-    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    animation: esqueleto-pulso 1.5s ease-in-out infinite;
     border-radius: var(--radius-md);
     }
 
-    .skeleton--card {
+    .esqueleto--tarjeta {
     height: 280px;
     border-radius: var(--radius-lg);
     }
 
-    .skeleton--text {
+    .esqueleto--texto {
     height: 1em;
     width: 70%;
     margin-bottom: var(--space-2);
     }
 
-    .skeleton--text-short {
+    .esqueleto--texto-corto {
     height: 1em;
     width: 40%;
     }
@@ -483,26 +483,26 @@
 
     /* --- Estado vacío / error --- */
 
-    .empty-state {
+    .estado-vacio {
     text-align: center;
     padding: var(--space-20) var(--space-4);
     color: var(--color-text-muted);
     }
 
-    .empty-state__icon {
+    .estado-vacio__icono {
     font-size: 3rem;
     margin-bottom: var(--space-4);
     opacity: 0.4;
     }
 
-    .empty-state__title {
+    .estado-vacio__titulo {
     font-family: var(--font-heading);
     font-size: var(--text-xl);
     color: var(--color-text-primary);
     margin-bottom: var(--space-2);
     }
 
-    .empty-state__text {
+    .estado-vacio__texto {
     font-size: var(--text-sm);
     max-width: 320px;
     margin-inline: auto;
@@ -513,7 +513,7 @@
     6. HEADER Y NAVEGACIÓN
     ============================================================ */
 
-    .header {
+    .cabecera {
     position: fixed;
     top: 0;
     left: 0;
@@ -527,14 +527,14 @@
     transition: background-color var(--transition-base);
     }
 
-    .header__inner {
+    .cabecera__interior {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     }
 
-    .header__logo {
+    .cabecera__logo {
     display: flex;
     align-items: center;
     gap: var(--space-2);
@@ -544,18 +544,18 @@
     color: var(--color-text-primary);
     }
 
-    .header__logo img {
+    .cabecera__logo img {
     height: 36px;
     width: auto;
     }
 
-    .nav__list {
+    .nav__lista {
     display: flex;
     align-items: center;
     gap: var(--space-6);
     }
 
-    .nav__link {
+    .nav__enlace {
     font-family: var(--font-heading);
     font-weight: var(--fw-medium);
     font-size: var(--text-sm);
@@ -564,7 +564,7 @@
     position: relative;
     }
 
-    .nav__link::after {
+    .nav__enlace::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -575,18 +575,18 @@
     transition: width var(--transition-base);
     }
 
-    .nav__link:hover,
-    .nav__link--active {
+    .nav__enlace:hover,
+    .nav__enlace--activo {
     color: var(--color-text-primary);
     }
 
-    .nav__link:hover::after,
-    .nav__link--active::after {
+    .nav__enlace:hover::after,
+    .nav__enlace--activo::after {
     width: 100%;
     }
 
     /* Menú hamburguesa (móvil) */
-    .nav__toggle {
+    .nav__boton {
     display: none;
     flex-direction: column;
     gap: 5px;
@@ -594,7 +594,7 @@
     cursor: pointer;
     }
 
-    .nav__toggle span {
+    .nav__boton span {
     display: block;
     width: 24px;
     height: 2px;
@@ -604,11 +604,11 @@
     }
 
     @media (max-width: 768px) {
-    .nav__toggle {
+    .nav__boton {
         display: flex;
     }
 
-    .nav__list {
+    .nav__lista {
         position: fixed;
         top: var(--header-height);
         left: 0;
@@ -625,13 +625,13 @@
         transition: transform var(--transition-base), opacity var(--transition-base);
     }
 
-    .nav__list--open {
+    .nav__lista--abierta {
         transform: translateY(0);
         opacity: 1;
         pointer-events: all;
     }
 
-    .nav__link {
+    .nav__enlace {
         font-size: var(--text-md);
     }
     }
@@ -737,25 +737,25 @@
     ============================================================ */
 
     /* Grids */
-    .grid--events {
+    .cuadricula--eventos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--space-6);
     }
 
     @media (max-width: 480px) {
-    .grid--events {
+    .cuadricula--eventos {
         grid-template-columns: 1fr;
     }
     }
 
-    /* Espaciado de página (compensa el header fijo) */
-    .page-offset {
+    /* Espaciado de página (compensa el cabecera fijo) */
+    .desplazamiento-pagina {
     padding-top: var(--header-height);
     }
 
     /* Visibilidad */
-    .sr-only {
+    .solo-lector {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -768,12 +768,12 @@
     }
 
     /* Alineación de texto */
-    .text-center { text-align: center; }
-    .text-left   { text-align: left; }
+    .texto-centro { text-align: center; }
+    .texto-izquierda   { text-align: left; }
 
     /* Flex helpers */
     .flex         { display: flex; }
-    .flex-center  { display: flex; align-items: center; justify-content: center; }
+    .flex-centro  { display: flex; align-items: center; justify-content: center; }
     .gap-2        { gap: var(--space-2); }
     .gap-4        { gap: var(--space-4); }
 
@@ -802,7 +802,7 @@
     10. ANIMACIONES GLOBALES
     ============================================================ */
 
-    @keyframes skeleton-pulse {
+    @keyframes esqueleto-pulso {
     0%   { background-position: 200% 0; }
     100% { background-position: -200% 0; }
     }
@@ -817,6 +817,6 @@
     to   { opacity: 1; }
     }
 
-    .animate-fade-in {
+    .animar-entrada {
     animation: fade-in 0.4s ease forwards;
     }

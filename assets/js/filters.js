@@ -12,8 +12,8 @@ let eventosOriginales = [];
 // Lee los selects de género y fecha, y filtra cuando cambian
 // -----------------------------------------------------------------------------
 function iniciarFiltros(grid) {
-    const selectGenero = document.getElementById('filter-genre');
-    const selectFecha  = document.getElementById('filter-date');
+    const selectGenero = document.getElementById('filtro-genero');
+    const selectFecha  = document.getElementById('filtro-fecha');
 
     // Si no hay filtros en esta página, salimos
     if (!selectGenero && !selectFecha) return;
@@ -45,8 +45,8 @@ function guardarEventosOriginales(eventos) {
 // Aplicar los filtros activos y redibujar el grid
 // -----------------------------------------------------------------------------
 function aplicarFiltros(grid) {
-    const genero = document.getElementById('filter-genre')?.value || '';
-    const fecha  = document.getElementById('filter-date')?.value  || '';
+    const genero = document.getElementById('filtro-genero')?.value || '';
+    const fecha  = document.getElementById('filtro-fecha')?.value  || '';
 
     let eventosFiltrados = eventosOriginales;
 

@@ -1,4 +1,4 @@
-    // =============================================================================
+// =============================================================================
     // search.js - Lógica del buscador
     // Gestiona lo que pasa cuando el usuario escribe una ciudad y busca.
     // También controla el menú hamburguesa del móvil.
@@ -45,13 +45,13 @@
     // Al pulsar el botón ☰, muestra u oculta el menú añadiendo una clase CSS
     // -----------------------------------------------------------------------------
     function iniciarMenuMovil() {
-        const boton = document.getElementById('nav-toggle');
+        const boton = document.getElementById('nav-boton');
         const menu  = document.getElementById('nav-menu');
     
         if (!boton || !menu) return; // Si no existen en esta página, salimos
     
         boton.addEventListener('click', function() {
             // toggle añade la clase si no está, la quita si está
-            menu.classList.toggle('nav__list--open');
+            menu.classList.toggle('nav__lista--abierta');
         });
     }

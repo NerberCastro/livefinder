@@ -16,14 +16,14 @@
 <!-- =========================================================================
     HEADER
     ========================================================================= -->
-<header class="header">
-    <div class="container header__inner">
-        <a href="index.html" class="header__logo">
-            Live<span class="text-accent">Finder</span>
+<cabecera class="cabecera">
+    <div class="container cabecera__interior">
+        <a href="index.html" class="cabecera__logo">
+            Live<span class="texto-acento">Finder</span>
         </a>
-        <button class="nav__toggle" id="nav-toggle">☰</button>
+        <button class="nav__boton" id="nav-boton">☰</button>
         <nav>
-            <ul class="nav__list" id="nav-menu">
+            <ul class="nav__lista" id="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="resultados.html">Conciertos</a></li>
                 <li><a href="ciudades.html">Ciudades</a></li>
@@ -31,7 +31,7 @@
             </ul>
         </nav>
     </div>
-</header>
+</cabecera>
 
 
 <!-- =========================================================================
@@ -41,27 +41,27 @@
     <video class="hero__video" autoplay loop muted playsinline>
         <source src="assets/images/hero/hero-7.mp4" type="video/mp4">
     </video>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-        <h1>Encuentra tu <span class="text-accent">concierto</span></h1>
+    <div class="hero__capa"></div>
+    <div class="hero__contenido">
+        <h1>Encuentra tu <span class="texto-acento">concierto</span></h1>
         <p>Busca eventos en tu ciudad</p>
 
-        <form id="hero-search-form">
-            <div class="search-bar search-bar--hero">
-                <span class="search-bar__icon"></span>
-                <input type="search" name="city" class="search-bar__input" placeholder="¿En qué ciudad buscas conciertos?" autocomplete="off" minlength="2" maxlength="50" required>
-                <button type="submit" class="search-bar__btn">Buscar</button>
+        <form id="formulario-busqueda-hero">
+            <div class="buscador buscador--hero">
+                <span class="buscador__icono"></span>
+                <input type="search" name="city" class="buscador__campo" placeholder="¿En qué ciudad buscas conciertos?" autocomplete="off" minlength="2" maxlength="50" required>
+                <button type="submit" class="buscador__boton">Buscar</button>
             </div>
         </form>
 
-        <div class="hero__quick-cities">
-            <span class="hero__quick-label">Búsquedas populares:</span>
-            <ul class="hero__quick-list">
-                <li><button class="hero__quick-btn" data-city="Madrid">Madrid</button></li>
-                <li><button class="hero__quick-btn" data-city="Barcelona">Barcelona</button></li>
-                <li><button class="hero__quick-btn" data-city="Sevilla">Sevilla</button></li>
-                <li><button class="hero__quick-btn" data-city="Valencia">Valencia</button></li>
-                <li><button class="hero__quick-btn" data-city="Bilbao">Bilbao</button></li>
+        <div class="hero__ciudades-rapidas">
+            <span class="hero__etiqueta-rapida">Búsquedas populares:</span>
+            <ul class="hero__lista-rapida">
+                <li><button class="hero__boton-rapido" data-city="Madrid">Madrid</button></li>
+                <li><button class="hero__boton-rapido" data-city="Barcelona">Barcelona</button></li>
+                <li><button class="hero__boton-rapido" data-city="Sevilla">Sevilla</button></li>
+                <li><button class="hero__boton-rapido" data-city="Valencia">Valencia</button></li>
+                <li><button class="hero__boton-rapido" data-city="Bilbao">Bilbao</button></li>
             </ul>
         </div>
     </div>
@@ -70,27 +70,27 @@
 <!-- =========================================================================
     CÓMO FUNCIONA
     ========================================================================= -->
-<section class="section how-it-works">
-    <video class="how-it-works__video" autoplay loop muted playsinline>
+<section class="section como-funciona">
+    <video class="como-funciona__video" autoplay loop muted playsinline>
         <source src="assets/images/hero/hero-5.mp4" type="video/mp4">
     </video>
-    <div class="how-it-works__overlay"></div>
+    <div class="como-funciona__capa"></div>
     <div class="container">
-        <ul class="steps">
-            <li class="step">
-                <div class="step__icon"></div>
-                <h3 class="step__title">Busca</h3>
-                <p class="step__text">Escribe tu ciudad</p>
+        <ul class="pasos">
+            <li class="paso">
+                <div class="paso__icono"></div>
+                <h3 class="paso__titulo">Busca</h3>
+                <p class="paso__texto">Escribe tu ciudad</p>
             </li>
-            <li class="step">
-                <div class="step__icon"></div>
-                <h3 class="step__title">Explora</h3>
-                <p class="step__text">Filtra por género o fecha</p>
+            <li class="paso">
+                <div class="paso__icono"></div>
+                <h3 class="paso__titulo">Explora</h3>
+                <p class="paso__texto">Filtra por género o fecha</p>
             </li>
-            <li class="step">
-                <div class="step__icon"></div>
-                <h3 class="step__title">Compra</h3>
-                <p class="step__text">Entradas directas sin intermediarios</p>
+            <li class="paso">
+                <div class="paso__icono"></div>
+                <h3 class="paso__titulo">Compra</h3>
+                <p class="paso__texto">Entradas directas sin intermediarios</p>
             </li>
         </ul>
     </div>
@@ -101,14 +101,14 @@
     ========================================================================= -->
 <section class="section">
     <div class="container">
-        <div class="section__header">
-            <h2 class="section__title">Próximos conciertos</h2>
-            <a href="resultados.html" class="btn btn--outline">Ver todos →</a>
+        <div class="seccion__cabecera">
+            <h2 class="seccion__titulo">Próximos conciertos</h2>
+            <a href="resultados.html" class="boton boton--contorno">Ver todos →</a>
         </div>
-        <div class="grid--events" id="featured-events-grid">
-            <div class="skeleton skeleton--card"></div>
-            <div class="skeleton skeleton--card"></div>
-            <div class="skeleton skeleton--card"></div>
+        <div class="cuadricula--eventos" id="cuadricula-eventos-destacados">
+            <div class="esqueleto esqueleto--tarjeta"></div>
+            <div class="esqueleto esqueleto--tarjeta"></div>
+            <div class="esqueleto esqueleto--tarjeta"></div>
         </div>
     </div>
 </section>
@@ -118,46 +118,46 @@
     ========================================================================= -->
 <section class="section">
     <div class="container">
-        <h2 class="section__title text-center">Ciudades</h2>
-        <div class="cities-grid">
+        <h2 class="seccion__titulo texto-centro">Ciudades</h2>
+        <div class="cuadricula-ciudades">
 
-            <a href="resultados.html?city=Madrid" class="city-card">
-                <img src="assets/images/ciudades/madrid.jpg" alt="Madrid" class="city-card__img" loading="lazy">
-                <div class="city-card__overlay"></div>
-                <div class="city-card__content">
-                    <h3 class="city-card__name">Madrid</h3>
+            <a href="resultados.html?city=Madrid" class="tarjeta-ciudad">
+                <img src="assets/images/ciudades/madrid.jpg" alt="Madrid" class="tarjeta-ciudad__imagen" loading="lazy">
+                <div class="tarjeta-ciudad__capa"></div>
+                <div class="tarjeta-ciudad__contenido">
+                    <h3 class="tarjeta-ciudad__nombre">Madrid</h3>
                 </div>
             </a>
 
-            <a href="resultados.html?city=Barcelona" class="city-card">
-                <img src="assets/images/ciudades/barcelona.jpg" alt="Barcelona" class="city-card__img" loading="lazy">
-                <div class="city-card__overlay"></div>
-                <div class="city-card__content">
-                    <h3 class="city-card__name">Barcelona</h3>
+            <a href="resultados.html?city=Barcelona" class="tarjeta-ciudad">
+                <img src="assets/images/ciudades/barcelona.jpg" alt="Barcelona" class="tarjeta-ciudad__imagen" loading="lazy">
+                <div class="tarjeta-ciudad__capa"></div>
+                <div class="tarjeta-ciudad__contenido">
+                    <h3 class="tarjeta-ciudad__nombre">Barcelona</h3>
                 </div>
             </a>
 
-            <a href="resultados.html?city=Sevilla" class="city-card">
-                <img src="assets/images/ciudades/sevilla.jpg" alt="Sevilla" class="city-card__img" loading="lazy">
-                <div class="city-card__overlay"></div>
-                <div class="city-card__content">
-                    <h3 class="city-card__name">Sevilla</h3>
+            <a href="resultados.html?city=Sevilla" class="tarjeta-ciudad">
+                <img src="assets/images/ciudades/sevilla.jpg" alt="Sevilla" class="tarjeta-ciudad__imagen" loading="lazy">
+                <div class="tarjeta-ciudad__capa"></div>
+                <div class="tarjeta-ciudad__contenido">
+                    <h3 class="tarjeta-ciudad__nombre">Sevilla</h3>
                 </div>
             </a>
 
-            <a href="resultados.html?city=Valencia" class="city-card">
-                <img src="assets/images/ciudades/valencia.jpg" alt="Valencia" class="city-card__img" loading="lazy">
-                <div class="city-card__overlay"></div>
-                <div class="city-card__content">
-                    <h3 class="city-card__name">Valencia</h3>
+            <a href="resultados.html?city=Valencia" class="tarjeta-ciudad">
+                <img src="assets/images/ciudades/valencia.jpg" alt="Valencia" class="tarjeta-ciudad__imagen" loading="lazy">
+                <div class="tarjeta-ciudad__capa"></div>
+                <div class="tarjeta-ciudad__contenido">
+                    <h3 class="tarjeta-ciudad__nombre">Valencia</h3>
                 </div>
             </a>
 
             <!-- Enlace a ver todas las ciudades -->
-            <a href="ciudades.html" class="city-card city-card--more">
-                <div class="city-card__content">
-                    <span class="city-card__more-icon">+</span>
-                    <h3 class="city-card__name">Ver más</h3>
+            <a href="ciudades.html" class="tarjeta-ciudad tarjeta-ciudad--mas">
+                <div class="tarjeta-ciudad__contenido">
+                    <span class="tarjeta-ciudad__icono-mas">+</span>
+                    <h3 class="tarjeta-ciudad__nombre">Ver más</h3>
                 </div>
             </a>
 
@@ -168,14 +168,14 @@
 <!-- =========================================================================
     CTA - Segundo buscador al final
     ========================================================================= -->
-<section class="section cta-section">
+<section class="section seccion-cta">
     <div class="container">
-        <div class="cta-block">
-            <h2 class="cta-block__title">¿Buscas conciertos?</h2>
-            <form id="cta-search-form">
-                <div class="search-bar search-bar--cta">
-                    <input type="search" name="city" class="search-bar__input" placeholder="Tu ciudad..." autocomplete="off" required>
-                    <button type="submit" class="search-bar__btn">Buscar</button>
+        <div class="bloque-cta">
+            <h2 class="bloque-cta__titulo">¿Buscas conciertos?</h2>
+            <form id="formulario-busqueda-cta">
+                <div class="buscador buscador--cta">
+                    <input type="search" name="city" class="buscador__campo" placeholder="Tu ciudad..." autocomplete="off" required>
+                    <button type="submit" class="buscador__boton">Buscar</button>
                 </div>
             </form>
         </div>
@@ -188,8 +188,8 @@
 <footer>
     <div class="container">
         <div>
-            <span>Live<span class="text-accent">Finder</span></span>
-            <p>© <span id="footer-year"></span></p>
+            <span>Live<span class="texto-acento">Finder</span></span>
+            <p>© <span id="pie-anio"></span></p>
         </div>
         <div>
             <a href="resultados.html">Conciertos</a>

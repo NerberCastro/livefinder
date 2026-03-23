@@ -25,15 +25,15 @@ function crearCardEvento(evento) {
     // Devolvemos el HTML como string — pages.js lo insertará en el DOM
     return `
         <article class="card">
-            <img src="${imagen}" alt="${nombre}" class="card__image" loading="lazy">
-            <div class="card__body">
-                <p class="card__date">${fechaFormateada}</p>
-                <h3 class="card__title">${nombre}</h3>
-                <p class="card__venue">${recinto}</p>
+            <img src="${imagen}" alt="${nombre}" class="tarjeta__imagen" loading="lazy">
+            <div class="tarjeta__cuerpo">
+                <p class="tarjeta__fecha">${fechaFormateada}</p>
+                <h3 class="tarjeta__titulo">${nombre}</h3>
+                <p class="tarjeta__recinto">${recinto}</p>
             </div>
-            <div class="card__footer">
-                <span class="card__city">${ciudad}</span>
-                <a href="evento.html?id=${evento.id}" class="btn btn--primary btn--sm">Ver más</a>
+            <div class="tarjeta__pie">
+                <span class="tarjeta__ciudad">${ciudad}</span>
+                <a href="evento.html?id=${evento.id}" class="boton boton--primario boton--pequeno">Ver más</a>
             </div>
         </article>
     `;
@@ -45,10 +45,10 @@ function crearCardEvento(evento) {
 // -----------------------------------------------------------------------------
 function mostrarError(contenedor, mensaje) {
     contenedor.innerHTML = `
-        <div class="empty-state">
-            <p class="empty-state__icon">😕</p>
-            <p class="empty-state__title">${mensaje}</p>
-            <p class="empty-state__text">Intenta con otra ciudad o vuelve más tarde.</p>
+        <div class="estado-vacio">
+            <p class="estado-vacio__icono">😕</p>
+            <p class="estado-vacio__titulo">${mensaje}</p>
+            <p class="estado-vacio__texto">Intenta con otra ciudad o vuelve más tarde.</p>
         </div>
     `;
 }
@@ -89,26 +89,26 @@ function crearDetalleEvento(evento) {
     const fechaFormateada = formatearFecha(fecha);
 
     return `
-        <div class="event-detail">
+        <div class="detalle-evento">
 
             <!-- Imagen grande del evento -->
-            <img src="${imagen}" alt="${nombre}" class="event-detail__img">
+            <img src="${imagen}" alt="${nombre}" class="detalle-evento__imagen">
 
             <!-- Nombre del evento -->
-            <h1 class="event-detail__title">${nombre}</h1>
+            <h1 class="detalle-evento__titulo">${nombre}</h1>
 
             <!-- Datos del evento en una tabla simple -->
-            <div class="event-detail__info">
+            <div class="detalle-evento__info">
                 <p>📅 <strong>Fecha:</strong> ${fechaFormateada} ${hora ? 'a las ' + hora : ''}</p>
                 <p>📍 <strong>Recinto:</strong> ${recinto}</p>
                 <p>🌍 <strong>Ciudad:</strong> ${ciudad}${pais ? ', ' + pais : ''}</p>
             </div>
 
             <!-- Descripción si existe -->
-            ${info ? `<p class="event-detail__desc">${info}</p>` : ''}
+            ${info ? `<p class="detalle-evento__descripcion">${info}</p>` : ''}
 
             <!-- Botón para comprar entradas — abre en pestaña nueva -->
-            <a href="${urlVenta}" target="_blank" class="btn btn--primary btn--lg">
+            <a href="${urlVenta}" target="_blank" class="boton boton--primario boton--grande">
                 🎟️ Comprar entradas
             </a>
 

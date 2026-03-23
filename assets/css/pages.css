@@ -1,4 +1,4 @@
-    /* ============================================================================
+/* ============================================================================
     ARCHIVO: pages.css
     Estilos específicos de cada página. Se carga después de base.css.
 
@@ -38,7 +38,7 @@
     }
 
     /* Overlay oscuro para que el texto sea legible */
-    .hero__overlay {
+    .hero__capa {
         position: absolute;
         top: 0;
         left: 0;
@@ -48,7 +48,7 @@
         z-index: 1;
     }
 
-    .hero__content {
+    .hero__contenido {
         position: relative;
         z-index: 2;
         width: 100%;
@@ -58,18 +58,18 @@
     }
 
     /* El resto de tu CSS se mantiene igual */
-    .hero__content h1 {
+    .hero__contenido h1 {
         font-size: 2.5rem;
         color: white;
         margin-bottom: 15px;
     }
 
-    .hero__content p {
+    .hero__contenido p {
         color: #eed6d6;
         margin-bottom: 30px;
     }
 
-    .search-bar--hero {
+    .buscador--hero {
         display: flex;
         align-items: center;
         background: white;
@@ -79,12 +79,12 @@
         margin-bottom: 30px;
     }
 
-    .search-bar--hero .search-bar__icon {
+    .buscador--hero .buscador__icono {
         padding: 0 10px 0 15px;
         font-size: 1.1rem;
     }
 
-    .search-bar--hero .search-bar__input {
+    .buscador--hero .buscador__campo {
         flex: 1;
         padding: 12px 10px;
         border: none;
@@ -94,7 +94,7 @@
         color: #333;
     }
 
-    .search-bar--hero .search-bar__btn {
+    .buscador--hero .buscador__boton {
         padding: 12px 25px;
         background: #e94560;
         color: white;
@@ -105,11 +105,11 @@
         white-space: nowrap;
     }
 
-    .search-bar--hero .search-bar__btn:hover {
+    .buscador--hero .buscador__boton:hover {
         background: #c73652;
     }
 
-    .hero__quick-cities {
+    .hero__ciudades-rapidas {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -117,12 +117,12 @@
         gap: 8px;
     }
 
-    .hero__quick-label {
+    .hero__etiqueta-rapida {
         color: #ccc;
         font-size: 0.9rem;
     }
 
-    .hero__quick-list {
+    .hero__lista-rapida {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -132,7 +132,7 @@
         padding: 0;
     }
 
-    .hero__quick-btn {
+    .hero__boton-rapido {
         padding: 5px 15px;
         border-radius: 20px;
         border: 1px solid rgba(255, 255, 255, 0.5);
@@ -144,19 +144,19 @@
         transition: background 0.2s, border-color 0.2s;
     }
 
-    .hero__quick-btn:hover {
+    .hero__boton-rapido:hover {
         background: #e94560;
         border-color: #e94560;
     }
     /* ============================================================================
     2. CÓMO FUNCIONA
     ============================================================================ */
-    .how-it-works {
+    .como-funciona {
         position: relative;
         overflow: hidden;
     }
 
-    .how-it-works__video {
+    .como-funciona__video {
         position: absolute;
         top: 0;
         left: 0;
@@ -166,7 +166,7 @@
         z-index: 0;
     }
 
-    .how-it-works__overlay {
+    .como-funciona__capa {
         position: absolute;
         top: 0;
         left: 0;
@@ -176,21 +176,21 @@
         z-index: 1;
     }
 
-    .how-it-works .container {
+    .como-funciona .container {
         position: relative;
         z-index: 2;
     }
 
     /* Ajustar colores para que se vean sobre el video */
-    .how-it-works .step__title {
+    .como-funciona .paso__titulo {
         color: #fff;
     }
 
-    .how-it-works .step__text {
+    .como-funciona .paso__texto {
         color: rgba(255, 255, 255, 0.85);
     }
 
-    .how-it-works .step__icon {
+    .como-funciona .paso__icono {
         background: rgba(26, 26, 46, 0.8);
         border-color: #e94560;
         color: #fff;
@@ -199,21 +199,21 @@
     /* ============================================================================
     3. EVENTOS
     ============================================================================ */
-    .section__header {
+    .seccion__cabecera {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 30px;
     }
 
-    .grid--events {
+    .cuadricula--eventos {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 
     /* Skeleton: caja animada que simula una card mientras carga */
-    .skeleton--card {
+    .esqueleto--tarjeta {
         height: 250px;
         background: #22223d;
         border-radius: 10px;
@@ -240,17 +240,17 @@
         border-color: #e94560;
     }
 
-    .card__image {
+    .tarjeta__imagen {
         width: 100%;
         height: 160px;
         object-fit: cover;
     }
 
-    .card__body {
+    .tarjeta__cuerpo {
         padding: 15px;
     }
 
-    .card__date {
+    .tarjeta__fecha {
         color: #e94560;
         font-size: 0.8rem;
         font-weight: bold;
@@ -258,7 +258,7 @@
         margin-bottom: 5px;
     }
 
-    .card__title {
+    .tarjeta__titulo {
         color: white;
         font-size: 1rem;
         margin-bottom: 5px;
@@ -269,12 +269,12 @@
         overflow: hidden;
     }
 
-    .card__venue {
+    .tarjeta__recinto {
         color: #9999bb;
         font-size: 0.85rem;
     }
 
-    .card__footer {
+    .tarjeta__pie {
         padding: 10px 15px;
         border-top: 1px solid #2e2e50;
         display: flex;
@@ -282,7 +282,7 @@
         align-items: center;
     }
 
-    .card__city {
+    .tarjeta__ciudad {
         color: #9999bb;
         font-size: 0.8rem;
     }
@@ -292,14 +292,14 @@
     Las cards tienen imagen de fondo + capa oscura + texto encima.
     Usamos position: relative en la card y absolute en el overlay y el texto.
     ============================================================================ */
-    .cities-grid {
+    .cuadricula-ciudades {
         display: grid;
         grid-template-columns: repeat(4, 1fr);   /* 4 columnas en escritorio */
         gap: 20px;
         margin: 30px 0;
     }
 
-    .city-card {
+    .tarjeta-ciudad {
         position: relative;
         display: block;
         border-radius: 10px;
@@ -309,31 +309,31 @@
         background: #1a1a2e;          /* Color si la imagen no carga */
     }
 
-    .city-card__img {
+    .tarjeta-ciudad__imagen {
         width: 100%;
         height: 100%;
         object-fit: cover;            /* Llena sin deformarse */
         transition: transform 0.3s;
     }
 
-    .city-card:hover .city-card__img {
+    .tarjeta-ciudad:hover .tarjeta-ciudad__imagen {
         transform: scale(1.06);
     }
 
     /* Capa oscura sobre la imagen para que el texto se lea */
-    .city-card__overlay {
+    .tarjeta-ciudad__capa {
         position: absolute;
         inset: 0;                     /* Cubre toda la card */
         background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
         transition: background 0.3s;
     }
 
-    .city-card:hover .city-card__overlay {
+    .tarjeta-ciudad:hover .tarjeta-ciudad__capa {
         background: linear-gradient(to top, rgba(233,69,96,0.7) 0%, transparent 60%);
     }
 
     /* Texto pegado al borde inferior */
-    .city-card__content {
+    .tarjeta-ciudad__contenido {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -341,14 +341,14 @@
         padding: 15px;
     }
 
-    .city-card__name {
+    .tarjeta-ciudad__nombre {
         color: white;
         font-size: 1.1rem;
         font-weight: bold;
         margin: 0;
     }
 
-    .city-card__country {
+    .tarjeta-ciudad__pais {
         color: rgba(255,255,255,0.7);
         font-size: 0.8rem;
         display: block;
@@ -356,7 +356,7 @@
     }
 
     /* Card especial "Ver más" — sin imagen, solo texto centrado */
-    .city-card--more {
+    .tarjeta-ciudad--mas {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -364,54 +364,54 @@
         background: #16213e;
     }
 
-    .city-card--more .city-card__content {
+    .tarjeta-ciudad--mas .tarjeta-ciudad__contenido {
         position: static;             /* Vuelve al flujo normal, no se pega abajo */
         text-align: center;
         padding: 20px;
     }
 
-    .city-card__more-icon {
+    .tarjeta-ciudad__icono-mas {
         display: block;
         font-size: 2rem;
         color: #e94560;
         margin-bottom: 8px;
     }
 
-    .city-card--more:hover {
+    .tarjeta-ciudad--mas:hover {
         border-color: #e94560;
     }
 
-    .city-card--more .city-card__name {
+    .tarjeta-ciudad--mas .tarjeta-ciudad__nombre {
         color: #9999bb;
         font-size: 1rem;
     }
 
-    .city-card--more:hover .city-card__name {
+    .tarjeta-ciudad--mas:hover .tarjeta-ciudad__nombre {
         color: #e94560;
     }
 
     /* ============================================================================
     5. CTA
     ============================================================================ */
-    .cta-section {
+    .seccion-cta {
         background: linear-gradient(135deg, #1a1a2e, #16213e);
         padding: 80px 0;
         text-align: center;
     }
 
-    .cta-block {
+    .bloque-cta {
         max-width: 500px;
         margin: 0 auto;
     }
 
-    .cta-block__title {
+    .bloque-cta__titulo {
         color: white;
         font-size: 2rem;
         margin-bottom: 30px;
     }
 
     /* Buscador del CTA — igual que el hero pero con fondo oscuro */
-    .search-bar--cta {
+    .buscador--cta {
         display: flex;
         align-items: center;
         background: #22223d;
@@ -421,7 +421,7 @@
         padding: 5px;
     }
 
-    .search-bar--cta .search-bar__input {
+    .buscador--cta .buscador__campo {
         flex: 1;
         padding: 12px 15px;
         border: none;
@@ -431,11 +431,11 @@
         font-size: 1rem;
     }
 
-    .search-bar--cta .search-bar__input::placeholder {
+    .buscador--cta .buscador__campo::placeholder {
         color: #666;
     }
 
-    .search-bar--cta .search-bar__btn {
+    .buscador--cta .buscador__boton {
         padding: 12px 25px;
         background: #e94560;
         color: white;
@@ -445,7 +445,7 @@
         white-space: nowrap;
     }
 
-    .search-bar--cta .search-bar__btn:hover {
+    .buscador--cta .buscador__boton:hover {
         background: #c73652;
     }
 
@@ -491,21 +491,21 @@
     ============================================================================ */
 
     /* Cabecera de páginas interiores (resultados, ciudades, sobre) */
-    .page-hero {
+    .cabecera-pagina {
         background: linear-gradient(135deg, #1a1a2e, #0f3460);
-        padding: 120px 0 60px;        /* padding-top alto para no tapar el header fijo */
+        padding: 120px 0 60px;        /* padding-top alto para no tapar el cabecera fijo */
         text-align: center;
     }
 
     /* Barra de búsqueda compacta en resultados.html */
-    .results-search-bar {
+    .barra-busqueda-resultados {
         background: #22223d;
-        padding: 90px 0 20px;   /* padding-top alto para no quedar tapado por el header fijo (70px) */
+        padding: 90px 0 20px;   /* padding-top alto para no quedar tapado por el cabecera fijo (70px) */
         border-bottom: 1px solid #2e2e50;
     }
 
     /* Buscador dentro de la barra de resultados */
-    .results-search-bar .search-bar {
+    .barra-busqueda-resultados .buscador {
         display: flex;
         align-items: center;
         background: #1a1a2e;
@@ -516,7 +516,7 @@
         max-width: 500px;
     }
 
-    .results-search-bar .search-bar__input {
+    .barra-busqueda-resultados .buscador__campo {
         flex: 1;
         padding: 10px 15px;
         border: none;
@@ -526,11 +526,11 @@
         font-size: 1rem;
     }
 
-    .results-search-bar .search-bar__input::placeholder {
+    .barra-busqueda-resultados .buscador__campo::placeholder {
         color: #666;
     }
 
-    .results-search-bar .search-bar__btn {
+    .barra-busqueda-resultados .buscador__boton {
         padding: 10px 20px;
         background: #e94560;
         color: white;
@@ -540,7 +540,7 @@
     }
 
     /* Cabecera de resultados: título a la izquierda, filtros a la derecha */
-    .results-header {
+    .cabecera-resultados {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -549,12 +549,12 @@
         gap: 15px;
     }
 
-    .results-filters {
+    .filtros-resultados {
         display: flex;
         gap: 10px;
     }
 
-    .results-filters select {
+    .filtros-resultados select {
         padding: 8px 12px;
         background: #22223d;
         color: white;
@@ -564,30 +564,30 @@
     }
 
     /* Estado vacío (cuando no hay resultados o no se ha buscado) */
-    .empty-state {
+    .estado-vacio {
         text-align: center;
         padding: 60px 20px;
         color: #9999bb;
     }
 
-    .empty-state__icon {
+    .estado-vacio__icono {
         font-size: 3rem;
         display: block;
         margin-bottom: 15px;
     }
 
-    .empty-state__title {
+    .estado-vacio__titulo {
         font-size: 1.3rem;
         color: white;
         margin-bottom: 10px;
     }
 
-    .empty-state__text {
+    .estado-vacio__texto {
         font-size: 0.9rem;
     }
 
     /* Botones y clases de utilidad */
-    .btn {
+    .boton {
         display: inline-block;
         padding: 10px 20px;
         border-radius: 50px;
@@ -599,33 +599,33 @@
         transition: background 0.2s, color 0.2s;
     }
 
-    .btn--primary {
+    .boton--primario {
         background: #e94560;
         color: white;
     }
 
-    .btn--primary:hover {
+    .boton--primario:hover {
         background: #c73652;
     }
 
-    .btn--outline {
+    .boton--contorno {
         background: transparent;
         color: #e94560;
         border: 2px solid #e94560;
     }
 
-    .btn--outline:hover {
+    .boton--contorno:hover {
         background: #e94560;
         color: white;
     }
 
-    .btn--sm {
+    .boton--pequeno {
         padding: 6px 14px;
         font-size: 0.8rem;
     }
 
     /* Página de detalle de evento */
-    .event-detail__img {
+    .detalle-evento__imagen {
         width: 100%;
         max-height: 400px;
         object-fit: cover;
@@ -633,23 +633,23 @@
         margin-bottom: 2rem;
     }
 
-    .event-detail__title {
+    .detalle-evento__titulo {
         font-size: 2rem;
         color: white;
         margin-bottom: 1.5rem;
     }
 
-    .event-detail__info {
+    .detalle-evento__info {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-bottom: 1.5rem;
     }
 
-    .event-detail__info p { color: #9999bb; }
-    .event-detail__info strong { color: white; }
+    .detalle-evento__info p { color: #9999bb; }
+    .detalle-evento__info strong { color: white; }
 
-    .event-detail__desc {
+    .detalle-evento__descripcion {
         color: #9999bb;
         line-height: 1.8;
         margin-bottom: 2rem;
@@ -660,16 +660,16 @@
     }
 
     /* Sobre.html */
-    .about-grid {
+    .cuadricula-sobre {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 60px;
     }
 
-    .about-grid h2 { color: white; margin-bottom: 15px; }
-    .about-grid p  { color: #9999bb; line-height: 1.8; margin-bottom: 15px; }
+    .cuadricula-sobre h2 { color: white; margin-bottom: 15px; }
+    .cuadricula-sobre p  { color: #9999bb; line-height: 1.8; margin-bottom: 15px; }
 
-    .about-list, .tech-list {
+    .lista-sobre, .lista-tecnologias {
         list-style: none;
         display: flex;
         flex-direction: column;
@@ -677,7 +677,7 @@
         margin-top: 20px;
     }
 
-    .about-list li, .tech-list li {
+    .lista-sobre li, .lista-tecnologias li {
         color: #9999bb;
         line-height: 1.6;
     }
@@ -687,30 +687,30 @@
     ============================================================================ */
     @media (max-width: 768px) {
         /* Hero */
-        .hero__content h1       { font-size: 1.8rem; }
-        .search-bar--hero       { flex-wrap: wrap; border-radius: 15px; }
-        .search-bar--hero .search-bar__btn { width: 100%; border-radius: 10px; }
+        .hero__contenido h1       { font-size: 1.8rem; }
+        .buscador--hero       { flex-wrap: wrap; border-radius: 15px; }
+        .buscador--hero .buscador__boton { width: 100%; border-radius: 10px; }
 
         /* Secciones */
-        .steps                  { grid-template-columns: 1fr; }
-        .grid--events           { grid-template-columns: 1fr; }
-        .cities-grid            { grid-template-columns: repeat(2, 1fr); }
+        .pasos                  { grid-template-columns: 1fr; }
+        .cuadricula--eventos           { grid-template-columns: 1fr; }
+        .cuadricula-ciudades            { grid-template-columns: repeat(2, 1fr); }
 
         /* Resultados */
-        .results-header         { flex-direction: column; align-items: flex-start; }
-        .results-filters        { flex-direction: column; width: 100%; }
-        .results-filters select { width: 100%; }
+        .cabecera-resultados         { flex-direction: column; align-items: flex-start; }
+        .filtros-resultados        { flex-direction: column; width: 100%; }
+        .filtros-resultados select { width: 100%; }
 
         /* Footer */
         footer .container       { flex-direction: column; text-align: center; gap: 20px; }
         footer div:last-child a { margin: 0 10px; }
 
         /* Sobre */
-        .about-grid             { grid-template-columns: 1fr; gap: 30px; }
+        .cuadricula-sobre             { grid-template-columns: 1fr; gap: 30px; }
     }
 
     @media (max-width: 480px) {
-        .cities-grid            { grid-template-columns: 1fr; }
-        .search-bar--cta        { flex-direction: column; border-radius: 15px; }
-        .search-bar--cta .search-bar__btn { width: 100%; border-radius: 10px; }
+        .cuadricula-ciudades            { grid-template-columns: 1fr; }
+        .buscador--cta        { flex-direction: column; border-radius: 15px; }
+        .buscador--cta .buscador__boton { width: 100%; border-radius: 10px; }
     }
