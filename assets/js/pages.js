@@ -1,4 +1,4 @@
-// =============================================================================
+/// =============================================================================
 // pages.js - Inicialización de cada página
 // =============================================================================
 /* 
@@ -38,14 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (formHero) {
         // Configura los buscadores (hero y CTA)
-        iniciarBuscador(formHero);
-        iniciarBuscador(formCta);
+        if (formHero) iniciarBuscador(formHero);
+        if (formCta) iniciarBuscador(formCta);
         
         // Configura los botones de búsqueda rápida (Madrid, Barcelona, etc.)
         iniciarBotonesRapidos();
         
         // Carga los eventos destacados (Madrid)
-        cargarEventosDestacados(gridEventos);
+        if (gridEventos) cargarEventosDestacados(gridEventos);
     }
 
     // =========================================================================
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (gridResultados) {
         // Obtiene la ciudad de la URL (?city=Madrid)
-        const params = new URLSearchParams(window.location.search);
-        const ciudad = params.get('city');
+        const paramsUrl = new URLSearchParams(window.location.search);
+        const ciudad = paramsUrl.get('city');
 
         if (ciudad) {
             // Hay ciudad en la URL — cargamos sus eventos
@@ -85,8 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const formResultados = document.getElementById('formulario-busqueda-resultados');
         if (formResultados) iniciarBuscador(formResultados);
 
-        // Configura los filtros (género y fecha)
-        iniciarFiltros(gridResultados);
+        // Configura los filtros (género y fecha) - solo si existe la función
+        if (typeof iniciarFiltros === 'function') {
+            iniciarFiltros(gridResultados);
+        }
     }
 
     // =========================================================================
@@ -96,13 +98,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (contenedorEvento) {
         // Obtiene el ID del evento de la URL (?id=xxxx)
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
+        const paramsDetalle = new URLSearchParams(window.location.search);
+        const id = paramsDetalle.get('id');
 
         if (id) {
             cargarDetalleEvento(contenedorEvento, id);
         } else {
-            mostrarError(contenedorEvento, 'No se encontró el evento.');
+            if (typeof mostrarError === 'function') {
+                mostrarError(contenedorEvento, 'No se encontró el evento.');
+            } else {
+                contenedorEvento.innerHTML = '<p>Error: No se encontró el evento.</p>';
+            }
         }
     }
 
@@ -115,28 +121,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Configura los botones de filtro por región
         const botonesFiltro = document.querySelectorAll('.cities-filter__btn');
 
-        botonesFiltro.forEach(function(boton) {
-            boton.addEventListener('click', function() {
+        if (botonesFiltro.length > 0) {
+            botonesFiltro.forEach(function(boton) {
+                boton.addEventListener('click', function() {
+                    // Quita la clase 'active' de todos los botones
+                    botonesFiltro.forEach(function(b) { 
+                        b.classList.remove('active'); 
+                    });
+                    // Activa el botón clickeado
+                    boton.classList.add('active');
 
-                // Quita la clase 'active' de todos los botones
-                botonesFiltro.forEach(function(b) { b.classList.remove('active'); });
-                // Activa el botón clickeado
-                boton.classList.add('active');
+                    // Obtiene la región seleccionada
+                    const region = boton.getAttribute('data-region');
+                    const cards = gridCiudades.querySelectorAll('.tarjeta-ciudad');
 
-                // Obtiene la región seleccionada
-                const region = boton.getAttribute('data-region');
-                const cards  = gridCiudades.querySelectorAll('.tarjeta-ciudad');
-
-                // Muestra/oculta las tarjetas según la región
-                cards.forEach(function(card) {
-                    if (!region || card.getAttribute('data-region') === region) {
-                        card.classList.remove('hidden');  // Mostrar
-                    } else {
-                        card.classList.add('hidden');     // Ocultar
-                    }
+                    // Muestra/oculta las tarjetas según la región
+                    cards.forEach(function(card) {
+                        if (!region || card.getAttribute('data-region') === region) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
                 });
             });
-        });
+        }
     }
 
 });
@@ -150,19 +159,30 @@ document.addEventListener('DOMContentLoaded', function() {
     @param {HTMLElement} grid - Contenedor donde insertar las tarjetas
 */
 async function cargarEventosDestacados(grid) {
+    // Validar que grid existe
+    if (!grid) return;
+    
     // Busca eventos en Madrid
     const datos = await buscarEventos('Madrid');
 
     if (!datos || !datos._embedded) {
-        mostrarError(grid, 'No se pudieron cargar los eventos.');
+        if (typeof mostrarError === 'function') {
+            mostrarError(grid, 'No se pudieron cargar los eventos.');
+        } else {
+            grid.innerHTML = '<p>Error al cargar eventos</p>';
+        }
         return;
     }
 
-    // Toma solo los primeros 6 eventos
-    const eventos = datos._embedded.events.slice(0, 6);
+    // Toma solo los primeros 4 eventos
+    const eventos = datos._embedded.events.slice(0, 4);
     
     // Renderiza las tarjetas
-    grid.innerHTML = eventos.map(crearCardEvento).join('');
+    if (typeof crearCardEvento === 'function') {
+        grid.innerHTML = eventos.map(crearCardEvento).join('');
+    } else {
+        grid.innerHTML = '<p>Error: Función crearCardEvento no disponible</p>';
+    }
 }
 
 /* 
@@ -171,21 +191,34 @@ async function cargarEventosDestacados(grid) {
     @param {string} ciudad - Nombre de la ciudad a buscar
 */
 async function cargarResultados(grid, ciudad) {
+    // Validar que grid existe
+    if (!grid) return;
+    
     // Busca eventos en la ciudad
     const datos = await buscarEventos(ciudad);
 
     if (!datos || !datos._embedded) {
-        mostrarError(grid, `No se encontraron eventos en ${ciudad}.`);
+        if (typeof mostrarError === 'function') {
+            mostrarError(grid, `No se encontraron eventos en ${ciudad}.`);
+        } else {
+            grid.innerHTML = `<p>No se encontraron eventos en ${ciudad}</p>`;
+        }
         return;
     }
 
     const eventos = datos._embedded.events;
 
     // Guarda los eventos originales para que filters.js pueda filtrarlos
-    guardarEventosOriginales(eventos);
+    if (typeof guardarEventosOriginales === 'function') {
+        guardarEventosOriginales(eventos);
+    }
 
     // Renderiza las tarjetas
-    grid.innerHTML = eventos.map(crearCardEvento).join('');
+    if (typeof crearCardEvento === 'function') {
+        grid.innerHTML = eventos.map(crearCardEvento).join('');
+    } else {
+        grid.innerHTML = '<p>Error: Función crearCardEvento no disponible</p>';
+    }
 }
 
 /* 
@@ -194,14 +227,25 @@ async function cargarResultados(grid, ciudad) {
     @param {string} id - ID del evento
 */
 async function cargarDetalleEvento(contenedor, id) {
+    // Validar que contenedor existe
+    if (!contenedor) return;
+    
     // Obtiene los detalles del evento
     const evento = await obtenerEvento(id);
 
     if (!evento) {
-        mostrarError(contenedor, 'No se encontró el evento.');
+        if (typeof mostrarError === 'function') {
+            mostrarError(contenedor, 'No se encontró el evento.');
+        } else {
+            contenedor.innerHTML = '<p>No se encontró el evento.</p>';
+        }
         return;
     }
 
     // Renderiza el detalle
-    contenedor.innerHTML = crearDetalleEvento(evento);
+    if (typeof crearDetalleEvento === 'function') {
+        contenedor.innerHTML = crearDetalleEvento(evento);
+    } else {
+        contenedor.innerHTML = '<p>Error: Función crearDetalleEvento no disponible</p>';
+    }
 }
