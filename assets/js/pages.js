@@ -1,41 +1,60 @@
 // =============================================================================
 // pages.js - Inicialización de cada página
-// Este archivo detecta en qué página estamos y ejecuta lo que corresponde.
-// Es el punto de entrada: llama a las funciones de los otros archivos JS.
 // =============================================================================
+/* 
+    Este archivo es el punto de entrada de la aplicación.
+    Detecta en qué página estamos (home, resultados, detalle, ciudades)
+    y ejecuta las funciones correspondientes para cargar los datos.
+    
+    FLUJO:
+    1. Espera a que el DOM esté listo (DOMContentLoaded)
+    2. Configura elementos comunes (footer, menú móvil)
+    3. Detecta la página actual por la presencia de elementos específicos
+    4. Ejecuta la lógica específica de cada página
+*/
 
-// Esperamos a que todo el HTML esté cargado antes de ejecutar nada
+// Espera a que todo el HTML esté cargado antes de ejecutar nada
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Año actual en el footer (en todas las páginas)
+    // =========================================================================
+    // ELEMENTOS COMUNES (TODAS LAS PÁGINAS)
+    // =========================================================================
+    
+    // Año actual en el footer
     const spanAnio = document.getElementById('pie-anio');
     if (spanAnio) {
         spanAnio.textContent = new Date().getFullYear();
     }
 
-    // Menú hamburguesa (en todas las páginas)
+    // Configura el menú hamburguesa para móvil
     iniciarMenuMovil();
 
-    // -------------------------------------------------------------------------
-    // HOME (index.html)
-    // -------------------------------------------------------------------------
+    // =========================================================================
+    // PÁGINA DE INICIO (index.html)
+    // =========================================================================
     const formHero    = document.getElementById('formulario-busqueda-hero');
     const formCta     = document.getElementById('formulario-busqueda-cta');
     const gridEventos = document.getElementById('cuadricula-eventos-destacados');
 
     if (formHero) {
+        // Configura los buscadores (hero y CTA)
         iniciarBuscador(formHero);
         iniciarBuscador(formCta);
+        
+        // Configura los botones de búsqueda rápida (Madrid, Barcelona, etc.)
         iniciarBotonesRapidos();
+        
+        // Carga los eventos destacados (Madrid)
         cargarEventosDestacados(gridEventos);
     }
 
-    // -------------------------------------------------------------------------
-    // RESULTADOS (resultados.html)
-    // -------------------------------------------------------------------------
+    // =========================================================================
+    // PÁGINA DE RESULTADOS (resultados.html)
+    // =========================================================================
     const gridResultados = document.getElementById('cuadricula-resultados');
 
     if (gridResultados) {
+        // Obtiene la ciudad de la URL (?city=Madrid)
         const params = new URLSearchParams(window.location.search);
         const ciudad = params.get('city');
 
@@ -46,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             cargarResultados(gridResultados, ciudad);
         } else {
-            // No hay ciudad — ocultamos los filtros y mostramos mensaje de búsqueda
+            // No hay ciudad — mostramos mensaje para que el usuario busque
             const filtros = document.querySelector('.filtros-resultados');
             if (filtros) filtros.style.display = 'none';
 
@@ -62,18 +81,21 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }
 
+        // Configura el buscador dentro de la página de resultados
         const formResultados = document.getElementById('formulario-busqueda-resultados');
         if (formResultados) iniciarBuscador(formResultados);
 
+        // Configura los filtros (género y fecha)
         iniciarFiltros(gridResultados);
     }
 
-    // -------------------------------------------------------------------------
-    // DETALLE DE EVENTO (evento.html)
-    // -------------------------------------------------------------------------
+    // =========================================================================
+    // PÁGINA DE DETALLE (evento.html)
+    // =========================================================================
     const contenedorEvento = document.getElementById('detalle-evento');
 
     if (contenedorEvento) {
+        // Obtiene el ID del evento de la URL (?id=xxxx)
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
 
@@ -84,31 +106,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // -------------------------------------------------------------------------
-    // CIUDADES (ciudades.html)
-    // FIX: movido aquí dentro del DOMContentLoaded para que el HTML ya exista
-    // -------------------------------------------------------------------------
+    // =========================================================================
+    // PÁGINA DE CIUDADES (ciudades.html)
+    // =========================================================================
     const gridCiudades = document.getElementById('cuadricula-ciudades');
 
     if (gridCiudades) {
+        // Configura los botones de filtro por región
         const botonesFiltro = document.querySelectorAll('.cities-filter__btn');
 
         botonesFiltro.forEach(function(boton) {
             boton.addEventListener('click', function() {
 
-                // Quitamos "active" de todos y se lo ponemos al pulsado
+                // Quita la clase 'active' de todos los botones
                 botonesFiltro.forEach(function(b) { b.classList.remove('active'); });
+                // Activa el botón clickeado
                 boton.classList.add('active');
 
+                // Obtiene la región seleccionada
                 const region = boton.getAttribute('data-region');
                 const cards  = gridCiudades.querySelectorAll('.tarjeta-ciudad');
 
+                // Muestra/oculta las tarjetas según la región
                 cards.forEach(function(card) {
-                    // Si region está vacío ("Todas"), mostramos todo
                     if (!region || card.getAttribute('data-region') === region) {
-                        card.classList.remove('hidden');
+                        card.classList.remove('hidden');  // Mostrar
                     } else {
-                        card.classList.add('hidden');
+                        card.classList.add('hidden');     // Ocultar
                     }
                 });
             });
@@ -118,11 +142,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // =============================================================================
-// Funciones de carga de datos
+// FUNCIONES DE CARGA DE DATOS
 // =============================================================================
 
-// Carga 6 eventos de Madrid en la home
+/* 
+    cargarEventosDestacados - Carga eventos de Madrid para la página de inicio
+    @param {HTMLElement} grid - Contenedor donde insertar las tarjetas
+*/
 async function cargarEventosDestacados(grid) {
+    // Busca eventos en Madrid
     const datos = await buscarEventos('Madrid');
 
     if (!datos || !datos._embedded) {
@@ -130,13 +158,20 @@ async function cargarEventosDestacados(grid) {
         return;
     }
 
+    // Toma solo los primeros 6 eventos
     const eventos = datos._embedded.events.slice(0, 6);
+    
+    // Renderiza las tarjetas
     grid.innerHTML = eventos.map(crearCardEvento).join('');
 }
 
-// Carga eventos de la ciudad de la URL
-// FIX: ahora llama a guardarEventosOriginales() para que los filtros funcionen
+/* 
+    cargarResultados - Carga eventos de la ciudad buscada
+    @param {HTMLElement} grid - Contenedor donde insertar las tarjetas
+    @param {string} ciudad - Nombre de la ciudad a buscar
+*/
 async function cargarResultados(grid, ciudad) {
+    // Busca eventos en la ciudad
     const datos = await buscarEventos(ciudad);
 
     if (!datos || !datos._embedded) {
@@ -146,14 +181,20 @@ async function cargarResultados(grid, ciudad) {
 
     const eventos = datos._embedded.events;
 
-    // Guardamos los eventos originales para que filters.js pueda filtrarlos
+    // Guarda los eventos originales para que filters.js pueda filtrarlos
     guardarEventosOriginales(eventos);
 
+    // Renderiza las tarjetas
     grid.innerHTML = eventos.map(crearCardEvento).join('');
 }
 
-// Carga el detalle de un evento concreto
+/* 
+    cargarDetalleEvento - Carga y muestra el detalle de un evento
+    @param {HTMLElement} contenedor - Contenedor donde insertar el detalle
+    @param {string} id - ID del evento
+*/
 async function cargarDetalleEvento(contenedor, id) {
+    // Obtiene los detalles del evento
     const evento = await obtenerEvento(id);
 
     if (!evento) {
@@ -161,5 +202,6 @@ async function cargarDetalleEvento(contenedor, id) {
         return;
     }
 
+    // Renderiza el detalle
     contenedor.innerHTML = crearDetalleEvento(evento);
 }

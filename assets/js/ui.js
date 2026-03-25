@@ -1,28 +1,45 @@
 // =============================================================================
 // ui.js - Funciones para pintar cosas en la pantalla
-// Aquí creamos el HTML de las cards, mensajes de error, etc.
-// Estas funciones reciben datos y los convierten en elementos visibles.
 // =============================================================================
+/* 
+    Este archivo contiene todas las funciones que generan HTML dinámicamente.
+    Convierte los datos de Ticketmaster en elementos visibles para el usuario.
+    
+    FUNCIONES:
+    - crearCardEvento: Genera una tarjeta resumen de evento
+    - mostrarError: Muestra mensajes de error amigables
+    - formatearFecha: Convierte fechas a formato legible en español
+    - crearDetalleEvento: Genera la vista completa de un evento
+*/
 
 // -----------------------------------------------------------------------------
-// Crear el HTML de una card de evento
-// Recibe: un objeto con los datos del evento (viene de Ticketmaster)
-// Devuelve: un string con el HTML de la card
+// CREAR CARD DE EVENTO
 // -----------------------------------------------------------------------------
+/* 
+    Genera el HTML de una tarjeta resumen para usar en cuadrículas.
+    @param {Object} evento - Datos del evento desde Ticketmaster
+    @returns {string} - HTML de la tarjeta
+*/
 function crearCardEvento(evento) {
-    // Ticketmaster devuelve los datos anidados, los extraemos con || para
-    // tener un valor por defecto si algo no existe
-    const nombre    = evento.name || 'Evento sin nombre';
-    const fecha     = evento.dates?.start?.localDate || 'Fecha por confirmar';
-    const ciudad    = evento._embedded?.venues?.[0]?.city?.name || 'Ciudad desconocida';
-    const recinto   = evento._embedded?.venues?.[0]?.name || '';
-    const imagen    = evento.images?.[0]?.url || 'assets/images/placeholders/evento.jpg';
-    const url       = evento.url || '#';
+    // =============================================================
+    // EXTRAER DATOS CON VALORES POR DEFECTO
+    // =============================================================
+    // Usamos optional chaining (?.) para evitar errores si faltan datos
+    // El operador || asigna un valor por defecto si el dato no existe
+    
+    const nombre    = evento.name || 'Evento sin nombre';                    // Título del evento
+    const fecha     = evento.dates?.start?.localDate || 'Fecha por confirmar'; // Fecha YYYY-MM-DD
+    const ciudad    = evento._embedded?.venues?.[0]?.city?.name || 'Ciudad desconocida'; // Ciudad
+    const recinto   = evento._embedded?.venues?.[0]?.name || '';            // Nombre del lugar
+    const imagen    = evento.images?.[0]?.url || 'assets/images/placeholders/evento.jpg'; // Imagen
+    const url       = evento.url || '#';                                    // Enlace original
 
-    // Formateamos la fecha de "2025-06-15" a "15 jun 2025"
+    // Convierte "2025-06-15" a "15 jun 2025"
     const fechaFormateada = formatearFecha(fecha);
 
-    // Devolvemos el HTML como string — pages.js lo insertará en el DOM
+    // =============================================================
+    // GENERAR HTML
+    // =============================================================
     return `
         <article class="card">
             <img src="${imagen}" alt="${nombre}" class="tarjeta__imagen" loading="lazy">
@@ -40,9 +57,13 @@ function crearCardEvento(evento) {
 }
 
 // -----------------------------------------------------------------------------
-// Mostrar un mensaje de error en un contenedor
-// Recibe: el elemento del DOM donde mostrar el error, y el texto del mensaje
+// MOSTRAR ERROR
 // -----------------------------------------------------------------------------
+/* 
+    Muestra un mensaje de error amigable dentro de un contenedor.
+    @param {HTMLElement} contenedor - Elemento DOM donde insertar el error
+    @param {string} mensaje - Texto del error
+*/
 function mostrarError(contenedor, mensaje) {
     contenedor.innerHTML = `
         <div class="estado-vacio">
@@ -54,62 +75,79 @@ function mostrarError(contenedor, mensaje) {
 }
 
 // -----------------------------------------------------------------------------
-// Formatear una fecha de "2025-06-15" a "15 jun 2025"
-// Recibe: fecha en formato YYYY-MM-DD (string)
-// Devuelve: fecha legible en español (string)
+// FORMATEAR FECHA
 // -----------------------------------------------------------------------------
+/* 
+    Convierte fecha de formato ISO (YYYY-MM-DD) a formato legible en español.
+    Ejemplo: "2025-06-15" → "15 jun 2025"
+    
+    @param {string} fecha - Fecha en formato YYYY-MM-DD
+    @returns {string} - Fecha formateada en español
+*/
 function formatearFecha(fecha) {
-    // Si la fecha no es válida, la devolvemos tal cual
+    // Si la fecha no es válida o ya es texto, la devolvemos tal cual
     if (!fecha || fecha === 'Fecha por confirmar') return fecha;
 
-    const date = new Date(fecha + 'T00:00:00'); // T00:00:00 evita problemas de zona horaria
+    // Añade T00:00:00 para evitar problemas con zona horaria
+    const date = new Date(fecha + 'T00:00:00');
+    
+    // Formato: día, mes abreviado, año (ej: "15 jun 2025")
     return date.toLocaleDateString('es-ES', {
-        day:   'numeric',
-        month: 'short',
-        year:  'numeric'
+        day:   'numeric',   // Número del día (1-31)
+        month: 'short',     // Nombre del mes abreviado (ene, feb, mar...)
+        year:  'numeric'    // Año completo (2025)
     });
 }
 
 // -----------------------------------------------------------------------------
-// Crear el HTML del detalle de un evento
-// Recibe: objeto con los datos completos del evento (viene de Ticketmaster)
-// Devuelve: string con el HTML del detalle
+// CREAR DETALLE DE EVENTO
 // -----------------------------------------------------------------------------
+/* 
+    Genera la vista completa de un evento para la página evento.html.
+    @param {Object} evento - Datos completos del evento desde Ticketmaster
+    @returns {string} - HTML del detalle
+*/
 function crearDetalleEvento(evento) {
-    const nombre   = evento.name || 'Evento sin nombre';
-    const fecha    = evento.dates?.start?.localDate || 'Fecha por confirmar';
-    const hora     = evento.dates?.start?.localTime?.slice(0, 5) || '';
-    const imagen   = evento.images?.[0]?.url || 'assets/images/placeholders/evento.jpg';
-    const recinto  = evento._embedded?.venues?.[0]?.name || 'Recinto por confirmar';
-    const ciudad   = evento._embedded?.venues?.[0]?.city?.name || '';
-    const pais     = evento._embedded?.venues?.[0]?.country?.name || '';
-    const urlVenta = evento.url || '#';
-    const info     = evento.info || evento.pleaseNote || '';
+    // =============================================================
+    // EXTRAER DATOS CON VALORES POR DEFECTO
+    // =============================================================
+    const nombre   = evento.name || 'Evento sin nombre';                    // Título
+    const fecha    = evento.dates?.start?.localDate || 'Fecha por confirmar'; // Fecha
+    const hora     = evento.dates?.start?.localTime?.slice(0, 5) || '';    // Hora (HH:MM)
+    const imagen   = evento.images?.[0]?.url || 'assets/images/placeholders/evento.jpg'; // Imagen
+    const recinto  = evento._embedded?.venues?.[0]?.name || 'Recinto por confirmar'; // Lugar
+    const ciudad   = evento._embedded?.venues?.[0]?.city?.name || '';      // Ciudad
+    const pais     = evento._embedded?.venues?.[0]?.country?.name || '';    // País
+    const urlVenta = evento.url || '#';                                    // Enlace de compra
+    const info     = evento.info || evento.pleaseNote || '';               // Descripción
 
     const fechaFormateada = formatearFecha(fecha);
 
+    // =============================================================
+    // GENERAR HTML DEL DETALLE
+    // =============================================================
     return `
         <div class="detalle-evento">
 
-            <!-- Imagen grande del evento -->
+            <!-- Imagen principal del evento -->
             <img src="${imagen}" alt="${nombre}" class="detalle-evento__imagen">
 
-            <!-- Nombre del evento -->
+            <!-- Título del evento -->
             <h1 class="detalle-evento__titulo">${nombre}</h1>
 
-            <!-- Datos del evento en una tabla simple -->
+            <!-- Información estructurada del evento -->
             <div class="detalle-evento__info">
-                <p>📅 <strong>Fecha:</strong> ${fechaFormateada} ${hora ? 'a las ' + hora : ''}</p>
-                <p>📍 <strong>Recinto:</strong> ${recinto}</p>
-                <p>🌍 <strong>Ciudad:</strong> ${ciudad}${pais ? ', ' + pais : ''}</p>
+                <p><strong>Fecha:</strong> ${fechaFormateada} ${hora ? 'a las ' + hora : ''}</p>
+                <p><strong>Recinto:</strong> ${recinto}</p>
+                <p><strong>Ciudad:</strong> ${ciudad}${pais ? ', ' + pais : ''}</p>
             </div>
 
-            <!-- Descripción si existe -->
+            <!-- Descripción adicional (si existe) -->
             ${info ? `<p class="detalle-evento__descripcion">${info}</p>` : ''}
 
-            <!-- Botón para comprar entradas — abre en pestaña nueva -->
+            <!-- Botón para comprar entradas (abre en nueva pestaña) -->
             <a href="${urlVenta}" target="_blank" class="boton boton--primario boton--grande">
-                🎟️ Comprar entradas
+                Comprar entradas
             </a>
 
         </div>

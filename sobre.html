@@ -1,124 +1,235 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre LiveFinder</title>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <!-- =========================================================================
+            METADATOS Y CONFIGURACIÓN DEL DOCUMENTO
+            ========================================================================= -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sobre LiveFinder</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+        <!-- =========================================================================
+            FUENTES GOOGLE (preconexión para mejorar rendimiento)
+            - Preconnect: establece conexión temprana con los dominios de Google Fonts
+            - Poppins: tipografía para títulos (pesos 600 y 700)
+            - Inter: tipografía para texto general (pesos 400 y 500)
+            ========================================================================= -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/pages.css">
-</head>
-<body>
+        <!-- =========================================================================
+            HOJAS DE ESTILO CSS
+            - base.css: estilos globales (reset CSS, tipografías, utilidades)
+            - pages.css: estilos específicos para páginas (sobre, cuadrículas, etc.)
+            ========================================================================= -->
+        <link rel="stylesheet" href="assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/pages.css">
+    </head>
+    <body>
 
-<!-- =========================================================================
-    HEADER
-    ========================================================================= -->
-<cabecera class="cabecera">
-    <div class="container cabecera__interior">
-        <a href="index.html" class="cabecera__logo">
-            Live<span class="texto-acento">Finder</span>
-        </a>
-        <button class="nav__boton" id="nav-boton">☰</button>
-        <nav>
-            <ul class="nav__lista" id="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="resultados.html">Conciertos</a></li>
-                <li><a href="ciudades.html">Ciudades</a></li>
-                <li><a href="sobre.html" class="nav__enlace--activo">Sobre</a></li>
+    <!-- =========================================================================
+        HEADER - BARRA DE NAVEGACIÓN PRINCIPAL
+        ========================================================================= -->
+    <header class="cabecera">
+        <div class="container cabecera__interior">
+            <!-- Logo del sitio: enlace a la página de inicio -->
+            <a href="index.html" class="cabecera__logo">
+                Live<span class="texto-acento">Finder</span>
+            </a>
+            
+            <!-- Botón para menú hamburguesa en dispositivos móviles -->
+            <!-- Identificador nav-boton: utilizado por JavaScript para controlar la visibilidad del menú -->
+            <button class="nav__boton" id="nav-boton" aria-label="Abrir menú de navegación">☰</button>
+            
+            <!-- Menú de navegación principal -->
+            <nav>
+                <ul class="nav__lista" id="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="resultados.html">Conciertos</a></li>
+                    <li><a href="ciudades.html">Ciudades</a></li>
+                    <!-- Clase nav__enlace--activo: indica la página actual (estilo visual activo) -->
+                    <li><a href="sobre.html" class="nav__enlace--activo">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+        CABECERA DE LA PÁGINA "SOBRE"
+        Presenta el título principal y el lema del sitio
+        ========================================================================= -->
+    <section class="cabecera-pagina">
+        <div class="container">
+            <!-- Encabezado principal de la página (solo uno por documento) -->
+            <h1 class="seccion__titulo">Sobre LiveFinder</h1>
+            <!-- Subtítulo con el lema o misión del sitio -->
+            <p class="seccion__subtitulo">"Encuentra, vive y disfruta"</p>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+        SECCIÓN "QUÉ ES LIVEFINDER" Y "¿PARA QUIÉN ES?"
+        Contenido informativo en formato de cuadrícula
+        ========================================================================= -->
+    <section class="section">
+        <div class="container cuadricula-sobre">
+            <!-- 
+                NOTA: cuadricula-sobre es una clase CSS que organiza el contenido en dos columnas
+                en pantallas grandes, y se apila en dispositivos móviles
+            -->
+
+            <!-- Columna izquierda: Descripción del servicio -->
+            <div>
+                <h2>¿Qué es LiveFinder?</h2>
+                <p>LiveFinder es una aplicación web que te ayuda a descubrir conciertos y eventos musicales en vivo cerca de ti. Sin registros, sin complicaciones — buscas tu ciudad y encuentras lo que hay.</p>
+                <!-- 
+                    Fuente de datos: Ticketmaster
+                    Se menciona explícitamente para dar credibilidad y transparencia
+                -->
+                <p>Los datos vienen directamente de <strong>Ticketmaster</strong>, así que la información es real y actualizada.</p>
+            </div>
+
+            <!-- Columna derecha: Público objetivo -->
+            <div>
+                <h2>¿Para quién es?</h2>
+                <p>Para cualquier persona entre 18 y 45 años que no quiera perderse un concierto de su artista favorito. Especialmente pensado para España y Latinoamérica, donde otras plataformas tienen poca cobertura.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================================================
+        LO QUE NO ES - SECCIÓN DE ALCANCE DEL PROYECTO
+        Define claramente los límites del servicio para evitar malentendidos
+        ========================================================================= -->
+    <section class="section sobre-no">
+        <div class="container">
+            <h2 class="seccion__titulo">Lo que LiveFinder NO es</h2>
+            <!-- 
+                Lista de limitaciones o alcance:
+                Cada ítem usa un emoji (X) como indicador visual de negación
+                Se aclara que no se venden entradas, solo se redirige
+                Se especifica el enfoque exclusivo en música en vivo
+            -->
+            <ul class="lista-sobre">
+                <li>❌ No vendemos entradas — te llevamos a la web oficial</li>
+                <li>❌ No somos una red social musical</li>
+                <li>❌ No hacemos streaming de música</li>
+                <li>❌ No cubrimos eventos culturales generales, solo música en vivo</li>
             </ul>
-        </nav>
-    </div>
-</cabecera>
-
-<!-- =========================================================================
-    QUÉ ES LIVEFINDER
-    ========================================================================= -->
-<section class="cabecera-pagina">
-    <div class="container">
-        <h1 class="seccion__titulo">Sobre LiveFinder</h1>
-        <p class="seccion__subtitulo">"Encuentra, vive y disfruta"</p>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container cuadricula-sobre">
-
-        <div>
-            <h2>¿Qué es LiveFinder?</h2>
-            <p>LiveFinder es una aplicación web que te ayuda a descubrir conciertos y eventos musicales en vivo cerca de ti. Sin registros, sin complicaciones — buscas tu ciudad y encuentras lo que hay.</p>
-            <p>Los datos vienen directamente de <strong>Ticketmaster</strong>, así que la información es real y actualizada.</p>
         </div>
+    </section>
 
-        <div>
-            <h2>¿Para quién es?</h2>
-            <p>Para cualquier persona entre 18 y 45 años que no quiera perderse un concierto de su artista favorito. Especialmente pensado para España y Latinoamérica, donde otras plataformas tienen poca cobertura.</p>
+    <!-- =========================================================================
+        TECNOLOGÍAS USADAS - STACK TÉCNICO DEL PROYECTO
+        Transparencia sobre las herramientas utilizadas en el desarrollo
+        ========================================================================= -->
+    <section class="section">
+        <div class="container">
+            <h2 class="seccion__titulo">Tecnologías</h2>
+            <!-- 
+                Lista de tecnologías:
+                Frontend: vanilla JavaScript (sin frameworks) para máxima simplicidad
+                Backend: PHP + MySQL para caché de eventos
+                API: Ticketmaster Discovery API como fuente de datos
+                Entorno: XAMPP para desarrollo local
+            -->
+            <ul class="lista-tecnologias">
+                <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (sin frameworks)</li>
+                <li><strong>Backend:</strong> PHP + MySQL (caché de eventos)</li>
+                <li><strong>API:</strong> Ticketmaster Discovery API</li>
+                <li><strong>Entorno:</strong> XAMPP (Apache + PHP + MySQL)</li>
+            </ul>
         </div>
+    </section>
 
-    </div>
-</section>
-
-<!-- =========================================================================
-    LO QUE NO ES
-    Para dejar claro el alcance del proyecto
-    ========================================================================= -->
-<section class="section sobre-no">
-    <div class="container">
-        <h2 class="seccion__titulo">Lo que LiveFinder NO es</h2>
-        <ul class="lista-sobre">
-            <li>❌ No vendemos entradas — te llevamos a la web oficial</li>
-            <li>❌ No somos una red social musical</li>
-            <li>❌ No hacemos streaming de música</li>
-            <li>❌ No cubrimos eventos culturales generales, solo música en vivo</li>
-        </ul>
-    </div>
-</section>
-
-<!-- =========================================================================
-    TECNOLOGÍAS USADAS
-    ========================================================================= -->
-<section class="section">
-    <div class="container">
-        <h2 class="seccion__titulo">Tecnologías</h2>
-        <ul class="lista-tecnologias">
-            <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (sin frameworks)</li>
-            <li><strong>Backend:</strong> PHP + MySQL (caché de eventos)</li>
-            <li><strong>API:</strong> Ticketmaster Discovery API</li>
-            <li><strong>Entorno:</strong> XAMPP (Apache + PHP + MySQL)</li>
-        </ul>
-    </div>
-</section>
-
-<!-- =========================================================================
-    CONTACTO
-    id="contacto" para que el enlace del footer funcione (sobre.html#contacto)
-    ========================================================================= -->
-<section class="section" id="contacto">
-    <div class="container">
-        <h2 class="seccion__titulo">Contacto</h2>
-        <p>¿Tienes alguna sugerencia o encontraste un error? Escríbenos:</p>
-        <p><a href="/cdn-cgi/l/email-protection#f0989f9c91b09c99869596999e949582de9583" class="texto-acento"><span class="__cf_email__" data-cfemail="1e7671727f5e7277687b7877707a7b6c307b6d">[email&#160;protected]</span></a></p>
-    </div>
-</section>
-
-<!-- =========================================================================
-    FOOTER
-    ========================================================================= -->
-<footer>
-    <div class="container">
-        <div>
-            <span>Live<span class="texto-acento">Finder</span></span>
-            <p>© <span id="pie-anio"></span></p>
+    <!-- =========================================================================
+        CONTACTO - SECCIÓN DE CONTACTO
+        Identificador contacto: utilizado para anclaje desde el footer (sobre.html#contacto)
+        Permite a los usuarios reportar errores o sugerir mejoras
+        ========================================================================= -->
+    <section class="section" id="contacto">
+        <div class="container">
+            <h2 class="seccion__titulo">Contacto</h2>
+            <p>¿Tienes alguna sugerencia o encontraste un error? Escríbenos:</p>
+            <!-- 
+                Correo de contacto:
+                Se utiliza un enlace mailto: para abrir el cliente de correo predeterminado
+                Cloudflare protege el email con JavaScript para evitar spam
+                data-cfemail es un atributo de Cloudflare Email Protection
+            -->
+            <p><a href="/cdn-cgi/l/email-protection#f0989f9c91b09c99869596999e949582de9583" class="texto-acento"><span class="__cf_email__" data-cfemail="1e7671727f5e7277687b7877707a7b6c307b6d">[email&#160;protected]</span></a></p>
         </div>
-        <div>
-            <a href="resultados.html">Conciertos</a>
-            <a href="ciudades.html">Ciudades</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-    </div>
-</footer>
+    </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></s
+    <!-- =========================================================================
+        FOOTER - PIE DE PÁGINA
+        ========================================================================= -->
+    <footer>
+        <div class="container">
+            <div>
+                <!-- Logo del sitio en el footer -->
+                <span>Live<span class="texto-acento">Finder</span></span>
+                <!-- 
+                    El año del copyright se inserta dinámicamente.
+                    Identificador pie-anio: JavaScript inserta el año actual usando new Date().getFullYear()
+                    Esto evita tener que actualizar manualmente el año cada año.
+                -->
+                <p>© <span id="pie-anio"></span></p>
+            </div>
+            <div>
+                <!-- Enlaces de navegación secundarios en el footer -->
+                <a href="resultados.html">Conciertos</a>
+                <a href="ciudades.html">Ciudades</a>
+                <a href="sobre.html">Sobre</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================================================
+        SCRIPTS JAVASCRIPT
+        ========================================================================= -->
+    <!-- 
+        NOTA: Se ha eliminado el script de Cloudflare que estaba incompleto.
+        La protección de email de Cloudflare normalmente funciona con su propio script,
+        pero este estaba cortado y causaba un error de cierre de etiqueta.
+        
+        Si se desea mantener la protección de email, se puede usar una de estas alternativas:
+        1. Dejar que Cloudflare añada automáticamente su script (si el sitio está detrás de Cloudflare)
+        2. Usar un enfoque manual: codificar el email en JavaScript
+        3. Usar un servicio de ocultación de email como reCAPTCHA Mailhide
+        
+        Para este proyecto, los scripts principales son:
+        
+        ORDEN DE CARGA (importante para las dependencias entre archivos):
+        
+        1. config.js     - Variables de configuración global
+                        - API_BASE_URL: endpoint de la API de conciertos
+                        - Otras constantes reutilizables en toda la aplicación
+        
+        2. api.js        - Funciones para llamadas a la API
+                        - fetchEventosPorCiudad(ciudad): obtiene eventos por ciudad
+                        - fetchEventoPorId(id): obtiene detalles de un evento específico
+        
+        3. ui.js         - Funciones de manipulación del DOM y renderizado
+                        - crearTarjetaEvento(evento): genera HTML para cada tarjeta
+                        - crearDetalleEvento(evento): genera HTML para página de detalle
+        
+        4. search.js     - Lógica de búsqueda y manejo de formularios
+                        - Maneja los eventos submit de los formularios de búsqueda
+        
+        5. pages.js      - Lógica específica para cada página del sitio
+                        - Detecta en qué página estamos
+                        - Inserta el año actual en el footer (identificador pie-anio)
+                        - Configura el menú móvil (hamburguesa)
+                        - En la página "sobre", no hay carga dinámica de datos
+    -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/pages.js"></script>
+
+    </body>
+    </html>
