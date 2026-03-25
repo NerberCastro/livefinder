@@ -1,209 +1,278 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiveFinder — Conciertos en tu ciudad</title>
-    <meta name="description" content="Descubre conciertos cerca de ti.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/pages.css">
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <!-- =====================================================================
+            METADATOS Y CONFIGURACIÓN DEL DOCUMENTO
+            ===================================================================== -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LiveFinder — Conciertos en tu ciudad</title>
+        <meta name="description" content="Descubre conciertos cerca de ti.">
+        
+        <!-- =====================================================================
+            FUENTES GOOGLE: 
+            - Poppins: utilizada para títulos y elementos destacados (pesos 600 y 700)
+            - Inter: tipografía principal para texto general (pesos 400 y 500)
+            ===================================================================== -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+        
+        <!-- =====================================================================
+            HOJAS DE ESTILO CSS
+            - base.css: estilos globales (reset CSS, tipografías, utilidades reutilizables)
+            - pages.css: estilos específicos de componentes y páginas (hero, tarjetas, etc.)
+            ===================================================================== -->
+        <link rel="stylesheet" href="assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/pages.css">
+    </head>
+    <body>
 
-<!-- =========================================================================
-    HEADER
-    ========================================================================= -->
-<cabecera class="cabecera">
-    <div class="container cabecera__interior">
-        <a href="index.html" class="cabecera__logo">
-            Live<span class="texto-acento">Finder</span>
-        </a>
-        <button class="nav__boton" id="nav-boton">☰</button>
-        <nav>
-            <ul class="nav__lista" id="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="resultados.html">Conciertos</a></li>
-                <li><a href="ciudades.html">Ciudades</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-            </ul>
-        </nav>
-    </div>
-</cabecera>
-
-
-<!-- =========================================================================
-    HERO - Sección principal con buscador
-    ========================================================================= -->
-<section class="hero">
-    <video class="hero__video" autoplay loop muted playsinline>
-        <source src="assets/images/hero/hero-7.mp4" type="video/mp4">
-    </video>
-    <div class="hero__capa"></div>
-    <div class="hero__contenido">
-        <h1>Encuentra tu <span class="texto-acento">concierto</span></h1>
-        <p>Busca eventos en tu ciudad</p>
-
-        <form id="formulario-busqueda-hero">
-            <div class="buscador buscador--hero">
-                <span class="buscador__icono"></span>
-                <input type="search" name="city" class="buscador__campo" placeholder="¿En qué ciudad buscas conciertos?" autocomplete="off" minlength="2" maxlength="50" required>
-                <button type="submit" class="buscador__boton">Buscar</button>
-            </div>
-        </form>
-
-        <div class="hero__ciudades-rapidas">
-            <span class="hero__etiqueta-rapida">Búsquedas populares:</span>
-            <ul class="hero__lista-rapida">
-                <li><button class="hero__boton-rapido" data-city="Madrid">Madrid</button></li>
-                <li><button class="hero__boton-rapido" data-city="Barcelona">Barcelona</button></li>
-                <li><button class="hero__boton-rapido" data-city="Sevilla">Sevilla</button></li>
-                <li><button class="hero__boton-rapido" data-city="Valencia">Valencia</button></li>
-                <li><button class="hero__boton-rapido" data-city="Bilbao">Bilbao</button></li>
-            </ul>
+    <!-- =========================================================================
+        HEADER - BARRA DE NAVEGACIÓN PRINCIPAL
+        ========================================================================= -->
+    <header class="cabecera">
+        <div class="container cabecera__interior">
+            <!-- Logo del sitio: enlace a la página de inicio -->
+            <a href="index.html" class="cabecera__logo">
+                Live<span class="texto-acento">Finder</span>
+            </a>
+            
+            <!-- Botón para menú hamburguesa en dispositivos móviles 
+                Se activa mediante JavaScript para mostrar/ocultar la navegación -->
+            <button class="nav__boton" id="nav-boton" aria-label="Menú de navegación">☰</button>
+            
+            <!-- Menú de navegación principal con enlaces a las secciones clave -->
+            <nav>
+                <ul class="nav__lista" id="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="resultados.html">Conciertos</a></li>
+                    <li><a href="ciudades.html">Ciudades</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- =========================================================================
-    CÓMO FUNCIONA
-    ========================================================================= -->
-<section class="section como-funciona">
-    <video class="como-funciona__video" autoplay loop muted playsinline>
-        <source src="assets/images/hero/hero-5.mp4" type="video/mp4">
-    </video>
-    <div class="como-funciona__capa"></div>
-    <div class="container">
-        <ul class="pasos">
-            <li class="paso">
-                <div class="paso__icono"></div>
-                <h3 class="paso__titulo">Busca</h3>
-                <p class="paso__texto">Escribe tu ciudad</p>
-            </li>
-            <li class="paso">
-                <div class="paso__icono"></div>
-                <h3 class="paso__titulo">Explora</h3>
-                <p class="paso__texto">Filtra por género o fecha</p>
-            </li>
-            <li class="paso">
-                <div class="paso__icono"></div>
-                <h3 class="paso__titulo">Compra</h3>
-                <p class="paso__texto">Entradas directas sin intermediarios</p>
-            </li>
-        </ul>
-    </div>
-</section>
+    <!-- =========================================================================
+        HERO - SECCIÓN PRINCIPAL CON BUSCADOR
+        Esta sección constituye la primera impresión visual del sitio
+        ========================================================================= -->
+    <section class="hero">
+        <!-- Video de fondo: se reproduce automáticamente en bucle sin audio 
+            para crear una experiencia visual dinámica -->
+        <video class="hero__video" autoplay loop muted playsinline>
+            <source src="assets/images/hero/hero-7.mp4" type="video/mp4">
+        </video>
+        <!-- Capa semitransparente: mejora la legibilidad del texto sobre el video -->
+        <div class="hero__capa"></div>
+        <div class="hero__contenido">
+            <!-- h1: encabezado principal de la página (solo uno por documento) -->
+            <h1>Encuentra tu <span class="texto-acento">concierto</span></h1>
+            <p>Busca eventos en tu ciudad</p>
 
-<!-- =========================================================================
-    PRÓXIMOS EVENTOS - Se rellena con JavaScript (eventos de Madrid)
-    ========================================================================= -->
-<section class="section">
-    <div class="container">
-        <div class="seccion__cabecera">
-            <h2 class="seccion__titulo">Próximos conciertos</h2>
-            <a href="resultados.html" class="boton boton--contorno">Ver todos →</a>
-        </div>
-        <div class="cuadricula--eventos" id="cuadricula-eventos-destacados">
-            <div class="esqueleto esqueleto--tarjeta"></div>
-            <div class="esqueleto esqueleto--tarjeta"></div>
-            <div class="esqueleto esqueleto--tarjeta"></div>
-        </div>
-    </div>
-</section>
-
-<!-- =========================================================================
-    CIUDADES - Solo España
-    ========================================================================= -->
-<section class="section">
-    <div class="container">
-        <h2 class="seccion__titulo texto-centro">Ciudades</h2>
-        <div class="cuadricula-ciudades">
-
-            <a href="resultados.html?city=Madrid" class="tarjeta-ciudad">
-                <img src="assets/images/ciudades/madrid.jpg" alt="Madrid" class="tarjeta-ciudad__imagen" loading="lazy">
-                <div class="tarjeta-ciudad__capa"></div>
-                <div class="tarjeta-ciudad__contenido">
-                    <h3 class="tarjeta-ciudad__nombre">Madrid</h3>
-                </div>
-            </a>
-
-            <a href="resultados.html?city=Barcelona" class="tarjeta-ciudad">
-                <img src="assets/images/ciudades/barcelona.jpg" alt="Barcelona" class="tarjeta-ciudad__imagen" loading="lazy">
-                <div class="tarjeta-ciudad__capa"></div>
-                <div class="tarjeta-ciudad__contenido">
-                    <h3 class="tarjeta-ciudad__nombre">Barcelona</h3>
-                </div>
-            </a>
-
-            <a href="resultados.html?city=Sevilla" class="tarjeta-ciudad">
-                <img src="assets/images/ciudades/sevilla.jpg" alt="Sevilla" class="tarjeta-ciudad__imagen" loading="lazy">
-                <div class="tarjeta-ciudad__capa"></div>
-                <div class="tarjeta-ciudad__contenido">
-                    <h3 class="tarjeta-ciudad__nombre">Sevilla</h3>
-                </div>
-            </a>
-
-            <a href="resultados.html?city=Valencia" class="tarjeta-ciudad">
-                <img src="assets/images/ciudades/valencia.jpg" alt="Valencia" class="tarjeta-ciudad__imagen" loading="lazy">
-                <div class="tarjeta-ciudad__capa"></div>
-                <div class="tarjeta-ciudad__contenido">
-                    <h3 class="tarjeta-ciudad__nombre">Valencia</h3>
-                </div>
-            </a>
-
-            <!-- Enlace a ver todas las ciudades -->
-            <a href="ciudades.html" class="tarjeta-ciudad tarjeta-ciudad--mas">
-                <div class="tarjeta-ciudad__contenido">
-                    <span class="tarjeta-ciudad__icono-mas">+</span>
-                    <h3 class="tarjeta-ciudad__nombre">Ver más</h3>
-                </div>
-            </a>
-
-        </div>
-    </div>
-</section>
-
-<!-- =========================================================================
-    CTA - Segundo buscador al final
-    ========================================================================= -->
-<section class="section seccion-cta">
-    <div class="container">
-        <div class="bloque-cta">
-            <h2 class="bloque-cta__titulo">¿Buscas conciertos?</h2>
-            <form id="formulario-busqueda-cta">
-                <div class="buscador buscador--cta">
-                    <input type="search" name="city" class="buscador__campo" placeholder="Tu ciudad..." autocomplete="off" required>
+            <!-- Formulario de búsqueda principal 
+                El atributo name="city" será utilizado por JavaScript para capturar el valor -->
+            <form id="formulario-busqueda-hero">
+                <div class="buscador buscador--hero">
+                    <span class="buscador__icono"></span>
+                    <input type="search" name="city" class="buscador__campo" 
+                        placeholder="¿En qué ciudad buscas conciertos?" 
+                        autocomplete="off" minlength="2" maxlength="50" required>
                     <button type="submit" class="buscador__boton">Buscar</button>
                 </div>
             </form>
-        </div>
-    </div>
-</section>
 
-<!-- =========================================================================
-    FOOTER
-    ========================================================================= -->
-<footer>
-    <div class="container">
-        <div>
-            <span>Live<span class="texto-acento">Finder</span></span>
-            <p>© <span id="pie-anio"></span></p>
+            <!-- Botones de búsqueda rápida: ciudades más populares 
+                data-city: atributo personalizado que almacena el nombre de la ciudad 
+                para ser utilizado por el evento click en JavaScript -->
+            <div class="hero__ciudades-rapidas">
+                <span class="hero__etiqueta-rapida">Búsquedas populares:</span>
+                <ul class="hero__lista-rapida">
+                    <li><button class="hero__boton-rapido" data-city="Madrid">Madrid</button></li>
+                    <li><button class="hero__boton-rapido" data-city="Barcelona">Barcelona</button></li>
+                    <li><button class="hero__boton-rapido" data-city="Sevilla">Sevilla</button></li>
+                    <li><button class="hero__boton-rapido" data-city="Valencia">Valencia</button></li>
+                    <li><button class="hero__boton-rapido" data-city="Bilbao">Bilbao</button></li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <a href="resultados.html">Conciertos</a>
-            <a href="ciudades.html">Ciudades</a>
-            <a href="sobre.html">Sobre</a>
+    </section>
+
+    <!-- =========================================================================
+        CÓMO FUNCIONA - SECCIÓN EXPLICATIVA DE 3 PASOS
+        Muestra visualmente el flujo de uso de la aplicación
+        ========================================================================= -->
+    <section class="section como-funciona">
+        <!-- Video de fondo para esta sección -->
+        <video class="como-funciona__video" autoplay loop muted playsinline>
+            <source src="assets/images/hero/hero-5.mp4" type="video/mp4">
+        </video>
+        <div class="como-funciona__capa"></div>
+        <div class="container">
+            <ul class="pasos">
+                <!-- PASO 1: Búsqueda -->
+                <li class="paso">
+                    <div class="paso__icono"></div>
+                    <!-- h2: se utiliza para mantener una jerarquía correcta después del h1 -->
+                    <h2 class="paso__titulo">Busca</h2>
+                    <p class="paso__texto">Escribe tu ciudad</p>
+                </li>
+                <!-- PASO 2: Exploración -->
+                <li class="paso">
+                    <div class="paso__icono"></div>
+                    <h2 class="paso__titulo">Explora</h2>
+                    <p class="paso__texto">Filtra por género o fecha</p>
+                </li>
+                <!-- PASO 3: Compra -->
+                <li class="paso">
+                    <div class="paso__icono"></div>
+                    <h2 class="paso__titulo">Compra</h2>
+                    <p class="paso__texto">Entradas directas sin intermediarios</p>
+                </li>
+            </ul>
         </div>
-    </div>
-</footer>
+    </section>
 
-<script src="assets/js/config.js"></script>
-<script src="assets/js/api.js"></script>
-<script src="assets/js/ui.js"></script>
-<script src="assets/js/search.js"></script>
-<script src="assets/js/pages.js"></script>
+    <!-- =========================================================================
+        PRÓXIMOS EVENTOS - SECCIÓN DE DESTACADOS
+        Contenido dinámico: se carga mediante JavaScript (eventos de Madrid por defecto)
+        Se muestran esqueletos de carga (skeleton loaders) mientras se obtienen los datos
+        ========================================================================= -->
+    <section class="section">
+        <div class="container">
+            <!-- Cabecera de la sección con título y enlace para ver todos los eventos -->
+            <div class="seccion__cabecera">
+                <h2 class="seccion__titulo">Próximos conciertos</h2>
+                <a href="resultados.html" class="boton boton--contorno">Ver todos →</a>
+            </div>
+            <!-- Contenedor donde se inyectarán dinámicamente las tarjetas de eventos 
+                id="cuadricula-eventos-destacados": identificador único para manipulación DOM -->
+            <div class="cuadricula--eventos" id="cuadricula-eventos-destacados">
+                <!-- Esqueletos de carga: mantienen la estructura visual mientras se realiza la petición API -->
+                <div class="esqueleto esqueleto--tarjeta"></div>
+                <div class="esqueleto esqueleto--tarjeta"></div>
+                <div class="esqueleto esqueleto--tarjeta"></div>
+            </div>
+        </div>
+    </section>
 
-</body>
-</html>
+    <!-- =========================================================================
+        CIUDADES - GALERÍA VISUAL DE CIUDADES ESPAÑOLAS
+        Muestra una selección de ciudades con imágenes de fondo
+        ========================================================================= -->
+    <section class="section">
+        <div class="container">
+            <h2 class="seccion__titulo texto-centro">Ciudades</h2>
+            <div class="cuadricula-ciudades">
+
+                <!-- Tarjeta de Madrid: enlace a resultados.html con parámetro city -->
+                <a href="resultados.html?city=Madrid" class="tarjeta-ciudad">
+                    <img src="assets/images/ciudades/madrid.jpg" alt="Madrid" 
+                        class="tarjeta-ciudad__imagen" loading="lazy">
+                    <div class="tarjeta-ciudad__capa"></div>
+                    <div class="tarjeta-ciudad__contenido">
+                        <h3 class="tarjeta-ciudad__nombre">Madrid</h3>
+                    </div>
+                </a>
+
+                <!-- Tarjeta de Barcelona -->
+                <a href="resultados.html?city=Barcelona" class="tarjeta-ciudad">
+                    <img src="assets/images/ciudades/barcelona.jpg" alt="Barcelona" 
+                        class="tarjeta-ciudad__imagen" loading="lazy">
+                    <div class="tarjeta-ciudad__capa"></div>
+                    <div class="tarjeta-ciudad__contenido">
+                        <h3 class="tarjeta-ciudad__nombre">Barcelona</h3>
+                    </div>
+                </a>
+
+                <!-- Tarjeta de Sevilla -->
+                <a href="resultados.html?city=Sevilla" class="tarjeta-ciudad">
+                    <img src="assets/images/ciudades/sevilla.jpg" alt="Sevilla" 
+                        class="tarjeta-ciudad__imagen" loading="lazy">
+                    <div class="tarjeta-ciudad__capa"></div>
+                    <div class="tarjeta-ciudad__contenido">
+                        <h3 class="tarjeta-ciudad__nombre">Sevilla</h3>
+                    </div>
+                </a>
+
+                <!-- Tarjeta de Valencia -->
+                <a href="resultados.html?city=Valencia" class="tarjeta-ciudad">
+                    <img src="assets/images/ciudades/valencia.jpg" alt="Valencia" 
+                        class="tarjeta-ciudad__imagen" loading="lazy">
+                    <div class="tarjeta-ciudad__capa"></div>
+                    <div class="tarjeta-ciudad__contenido">
+                        <h3 class="tarjeta-ciudad__nombre">Valencia</h3>
+                    </div>
+                </a>
+
+                <!-- Tarjeta especial "Ver más": redirige a la página completa de ciudades -->
+                <a href="ciudades.html" class="tarjeta-ciudad tarjeta-ciudad--mas">
+                    <div class="tarjeta-ciudad__contenido">
+                        <span class="tarjeta-ciudad__icono-mas">+</span>
+                        <h3 class="tarjeta-ciudad__nombre">Ver más</h3>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+        CTA (CALL TO ACTION) - SEGUNDO BUSCADOR
+        Ubicado al final de la página para facilitar nuevas búsquedas sin tener que volver arriba
+        ========================================================================= -->
+    <section class="section seccion-cta">
+        <div class="container">
+            <div class="bloque-cta">
+                <h2 class="bloque-cta__titulo">¿Buscas conciertos?</h2>
+                <!-- Formulario de búsqueda secundario: misma funcionalidad que el hero 
+                    Comparte el mismo ID base para ser manejado por el mismo JavaScript -->
+                <form id="formulario-busqueda-cta">
+                    <div class="buscador buscador--cta">
+                        <input type="search" name="city" class="buscador__campo" 
+                            placeholder="Tu ciudad..." autocomplete="off" required>
+                        <button type="submit" class="buscador__boton">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+        FOOTER - PIE DE PÁGINA
+        Información de copyright y enlaces de navegación secundarios
+        ========================================================================= -->
+    <footer>
+        <div class="container">
+            <div>
+                <span>Live<span class="texto-acento">Finder</span></span>
+                <!-- El año se inserta dinámicamente mediante JavaScript 
+                    id="pie-anio": punto de inserción para document.getElementById() -->
+                <p>© <span id="pie-anio"></span></p>
+            </div>
+            <div>
+                <a href="resultados.html">Conciertos</a>
+                <a href="ciudades.html">Ciudades</a>
+                <a href="sobre.html">Sobre</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================================================
+        SCRIPTS JAVASCRIPT
+        ORDEN DE CARGA (importante para las dependencias):
+        1. config.js     - Variables de configuración (API keys, URLs, constantes)
+        2. api.js        - Funciones para llamadas a la API de conciertos
+        3. ui.js         - Funciones de manipulación del DOM (renderizado, skeletons)
+        4. search.js     - Lógica de búsqueda y manejo de eventos de formularios
+        5. pages.js      - Lógica específica para cada página del sitio (inicializaciones)
+        ========================================================================= -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/pages.js"></script>
+
+    </body>
+    </html>
