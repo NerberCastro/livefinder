@@ -392,7 +392,7 @@
 /* Página Sobre */
 .cuadricula-sobre {
     display: grid;
-    grid-template-columns: 1fr 1fr;  /* Corregido: 1fr 1fr en lugar de 3fr 4fr */
+    grid-template-columns: 1fr 1fr;  
     gap: 60px;
 }
 
