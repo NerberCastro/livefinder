@@ -54,50 +54,47 @@
         </div>
     </header>
 
-    <!-- =========================================================================
+<!-- =========================================================================
         HERO - SECCIÓN PRINCIPAL CON BUSCADOR
         Esta sección constituye la primera impresión visual del sitio
         ========================================================================= -->
-    <section class="hero">
-        <!-- Video de fondo: se reproduce automáticamente en bucle sin audio 
-            para crear una experiencia visual dinámica -->
-        <video class="hero__video" autoplay loop muted playsinline>
-            <source src="assets/images/hero/hero-7.mp4" type="video/mp4">
-        </video>
-        <!-- Capa semitransparente: mejora la legibilidad del texto sobre el video -->
-        <div class="hero__capa"></div>
-        <div class="hero__contenido">
-            <!-- h1: encabezado principal de la página (solo uno por documento) -->
-            <h1>Encuentra tu <span class="texto-acento">concierto</span></h1>
-            <p>Busca eventos en tu ciudad</p>
+<section class="hero">
+    <!-- Imagen de fondo con efecto zoom en lugar del video -->
+    <div class="hero__video hero__imagen-fondo" style="background-image: url('assets/images/hero/hero-7.jpg');"></div>
+    <!-- Capa semitransparente: mejora la legibilidad del texto sobre la imagen -->
+    <div class="hero__capa"></div>
+    <div class="hero__contenido">
+        <!-- h1: encabezado principal de la página (solo uno por documento) -->
+        <h1>Encuentra tu <span class="texto-acento">concierto</span></h1>
+        <p>Busca eventos en tu ciudad</p>
 
-            <!-- Formulario de búsqueda principal 
-                El atributo name="city" será utilizado por JavaScript para capturar el valor -->
-            <form id="formulario-busqueda-hero">
-                <div class="buscador buscador--hero">
-                    <span class="buscador__icono"></span>
-                    <input type="search" name="city" class="buscador__campo" 
-                        placeholder="¿En qué ciudad buscas conciertos?" 
-                        autocomplete="off" minlength="2" maxlength="50" required>
-                    <button type="submit" class="buscador__boton">Buscar</button>
-                </div>
-            </form>
-
-            <!-- Botones de búsqueda rápida: ciudades más populares 
-                data-city: atributo personalizado que almacena el nombre de la ciudad 
-                para ser utilizado por el evento click en JavaScript -->
-            <div class="hero__ciudades-rapidas">
-                <span class="hero__etiqueta-rapida">Búsquedas populares:</span>
-                <ul class="hero__lista-rapida">
-                    <li><button class="hero__boton-rapido" data-city="Madrid">Madrid</button></li>
-                    <li><button class="hero__boton-rapido" data-city="Barcelona">Barcelona</button></li>
-                    <li><button class="hero__boton-rapido" data-city="Sevilla">Sevilla</button></li>
-                    <li><button class="hero__boton-rapido" data-city="Valencia">Valencia</button></li>
-                    <li><button class="hero__boton-rapido" data-city="Bilbao">Bilbao</button></li>
-                </ul>
+        <!-- Formulario de búsqueda principal 
+            El atributo name="city" será utilizado por JavaScript para capturar el valor -->
+        <form id="formulario-busqueda-hero">
+            <div class="buscador buscador--hero">
+                <span class="buscador__icono"></span>
+                <input type="search" name="city" class="buscador__campo" 
+                    placeholder="¿En qué ciudad buscas conciertos?" 
+                    autocomplete="off" minlength="2" maxlength="50" required>
+                <button type="submit" class="buscador__boton">Buscar</button>
             </div>
+        </form>
+
+        <!-- Botones de búsqueda rápida: ciudades más populares 
+            data-city: atributo personalizado que almacena el nombre de la ciudad 
+            para ser utilizado por el evento click en JavaScript -->
+        <div class="hero__ciudades-rapidas">
+            <span class="hero__etiqueta-rapida">Búsquedas populares:</span>
+            <ul class="hero__lista-rapida">
+                <li><button class="hero__boton-rapido" data-city="Madrid">Madrid</button></li>
+                <li><button class="hero__boton-rapido" data-city="Barcelona">Barcelona</button></li>
+                <li><button class="hero__boton-rapido" data-city="Sevilla">Sevilla</button></li>
+                <li><button class="hero__boton-rapido" data-city="Valencia">Valencia</button></li>
+                <li><button class="hero__boton-rapido" data-city="Bilbao">Bilbao</button></li>
+            </ul>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- =========================================================================
         CÓMO FUNCIONA - SECCIÓN EXPLICATIVA DE 3 PASOS
@@ -105,16 +102,12 @@
         ========================================================================= -->
     <section class="section como-funciona">
         <!-- Video de fondo para esta sección -->
-        <video class="como-funciona__video" autoplay loop muted playsinline>
-            <source src="assets/images/hero/hero-5.mp4" type="video/mp4">
-        </video>
-        <div class="como-funciona__capa"></div>
+        <div class="hero__video hero__imagen-fondo" style="background-image: url('https://source.unsplash.com/1920x1080/?concert,stage');"></div>
         <div class="container">
             <ul class="pasos">
                 <!-- PASO 1: Búsqueda -->
                 <li class="paso">
                     <div class="paso__icono"></div>
-                    <!-- h2: se utiliza para mantener una jerarquía correcta después del h1 -->
                     <h2 class="paso__titulo">Busca</h2>
                     <p class="paso__texto">Escribe tu ciudad</p>
                 </li>
