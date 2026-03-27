@@ -1,13 +1,17 @@
-// =============================================================================
-// config.js - Configuración global
-// =============================================================================
+/*
+=============================================================================
+config.js - Configuración global
+=============================================================================
 
-// Ruta al proxy PHP que comunica con Ticketmaster
-// Oculta la API key y permite caché en servidor
+Ruta al proxy PHP que comunica con Ticketmaster
+Oculta la API key y permite caché en servidor
+*/
 const API_URL = 'php/proxy.php';
 
-// Ciudades disponibles en España
-// Se usan en búsquedas rápidas y galería de ciudades
+/*
+Ciudades disponibles en España
+Se usan en búsquedas rápidas y galería de ciudades
+*/
 const CIUDADES = [
     'Madrid',      // Capital, mayor oferta
     'Barcelona',   // Segunda ciudad con más eventos
@@ -19,10 +23,12 @@ const CIUDADES = [
     'Granada'      // Andalucía oriental
 ];
 
-// Resultados por página en la API
-// Balance entre rendimiento y experiencia de usuario
+/*
+Resultados por página en la API
+Balance entre rendimiento y experiencia de usuario
+*/
 const EVENTOS_POR_PAGINA = 20;
-javascript
+
 // =============================================================================
 // api.js - Comunicación con el proxy PHP
 // =============================================================================
