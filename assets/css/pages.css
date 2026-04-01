@@ -33,6 +33,13 @@
     z-index: 0;
 }
 
+/* --- CORRECCIÓN: background-size para que la imagen cubra el contenedor --- */
+.hero__imagen-fondo {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .hero__capa,
 .como-funciona__capa {
     position: absolute;
@@ -96,7 +103,7 @@
     color: white;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: background 0.2s ease, border-color 0.2s ease; /* Mejor que 'all' */
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .hero__boton-rapido:hover {
