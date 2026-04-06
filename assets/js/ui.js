@@ -10,10 +10,15 @@
     - mostrarError: Muestra mensajes de error amigables
     - formatearFecha: Convierte fechas a formato legible en español
     - crearDetalleEvento: Genera la vista completa de un evento
+    
+    // NUEVAS FUNCIONES PARA AGRUPAR POR DÍA
+    - agruparEventosPorDia: Agrupa eventos que ocurren la misma fecha
+    - crearCardEventoAgrupado: Genera tarjeta con múltiples horarios
+    - renderizarEventosAgrupados: Renderiza el grid con eventos agrupados
 */
 
 // -----------------------------------------------------------------------------
-// CREAR CARD DE EVENTO
+// CREAR CARD DE EVENTO (VERSIÓN ORIGINAL - SE MANTIENE POR COMPATIBILIDAD)
 // -----------------------------------------------------------------------------
 /* 
     Genera el HTML de una tarjeta resumen para usar en cuadrículas.
@@ -54,6 +59,121 @@ function crearCardEvento(evento) {
             </div>
         </article>
     `;
+}
+
+// -----------------------------------------------------------------------------
+// NUEVAS FUNCIONES PARA AGRUPAR EVENTOS POR DÍA
+// -----------------------------------------------------------------------------
+
+/* 
+    agruparEventosPorDia - Agrupa eventos que ocurren la misma fecha
+    @param {Array} eventos - Lista de eventos de Ticketmaster
+    @returns {Array} - Eventos agrupados por día
+*/
+function agruparEventosPorDia(eventos) {
+    const agrupados = new Map();
+    
+    eventos.forEach(evento => {
+        const fecha = evento.dates?.start?.localDate;
+        if (!fecha) return;
+        
+        if (!agrupados.has(fecha)) {
+            // Primera vez que vemos esta fecha
+            agrupados.set(fecha, {
+                fecha: fecha,
+                id: evento.id,
+                nombre: evento.name,
+                recinto: evento._embedded?.venues?.[0]?.name || 'Lugar por confirmar',
+                ciudad: evento._embedded?.venues?.[0]?.city?.name || 'Ciudad desconocida',
+                imagen: evento.images?.[0]?.url || 'assets/images/placeholders/evento.jpg',
+                url: evento.url || '#',
+                horarios: [],
+                todosLosEventos: []  // Guardamos los eventos originales por si hacen falta
+            });
+        }
+        
+        // Agregar el horario específico
+        const hora = evento.dates?.start?.localTime?.slice(0, 5) || 'Horario por confirmar';
+        agrupados.get(fecha).horarios.push(hora);
+        agrupados.get(fecha).todosLosEventos.push(evento);
+    });
+    
+    // Convertir el Map a Array y formatear horarios
+    return Array.from(agrupados.values()).map(evento => ({
+        ...evento,
+        horariosTexto: evento.horarios.length > 1 
+            ? `${evento.horarios.length} horarios disponibles`
+            : evento.horarios[0],
+        tieneMultiplesHorarios: evento.horarios.length > 1
+    }));
+}
+
+/* 
+    crearCardEventoAgrupado - Genera una tarjeta de evento agrupada por día
+    @param {Object} evento - Evento agrupado (con horarios múltiples)
+    @returns {string} - HTML de la tarjeta agrupada
+*/
+function crearCardEventoAgrupado(evento) {
+    const fechaFormateada = formatearFecha(evento.fecha);
+    
+    // Generar lista de horarios para el desplegable
+    const horariosLista = evento.horarios.map(h => `<li>⏰ ${h}</li>`).join('');
+    
+    return `
+        <article class="card card--agrupado">
+            <img src="${evento.imagen}" alt="${evento.nombre}" class="tarjeta__imagen" loading="lazy">
+            <div class="tarjeta__cuerpo">
+                <p class="tarjeta__fecha">${fechaFormateada}</p>
+                <h3 class="tarjeta__titulo">${evento.nombre}</h3>
+                <p class="tarjeta__recinto">${evento.recinto}</p>
+                
+                <!-- Horario(s) del evento -->
+                <div class="tarjeta__horarios">
+                    <span class="horario-icono">🕐</span>
+                    <span class="horario-texto">${evento.horariosTexto}</span>
+                </div>
+                
+                <!-- Desplegable con todos los horarios si hay múltiples -->
+                ${evento.tieneMultiplesHorarios ? `
+                    <details class="tarjeta__detalles">
+                        <summary>Ver todos los horarios (${evento.horarios.length})</summary>
+                        <ul class="horarios-lista">
+                            ${horariosLista}
+                        </ul>
+                    </details>
+                ` : ''}
+            </div>
+            <div class="tarjeta__pie">
+                <span class="tarjeta__ciudad">${evento.ciudad}</span>
+                <a href="evento.html?id=${evento.id}" class="boton boton--primario boton--pequeno">Ver más</a>
+            </div>
+        </article>
+    `;
+}
+
+/* 
+    renderizarEventosAgrupados - Renderiza eventos agrupados en un contenedor
+    @param {HTMLElement} contenedor - Elemento DOM donde insertar
+    @param {Array} eventos - Lista de eventos de Ticketmaster
+*/
+function renderizarEventosAgrupados(contenedor, eventos) {
+    if (!eventos || eventos.length === 0) {
+        if (typeof mostrarError === 'function') {
+            mostrarError(contenedor, 'No hay eventos en esta ciudad');
+        } else {
+            contenedor.innerHTML = `
+                <div class="estado-vacio">
+                    <p class="estado-vacio__icono">🎵</p>
+                    <p class="estado-vacio__titulo">No hay eventos</p>
+                    <p class="estado-vacio__texto">No encontramos conciertos en esta ciudad</p>
+                </div>
+            `;
+        }
+        return;
+    }
+    
+    const eventosAgrupados = agruparEventosPorDia(eventos);
+    contenedor.innerHTML = eventosAgrupados.map(crearCardEventoAgrupado).join('');
 }
 
 // -----------------------------------------------------------------------------

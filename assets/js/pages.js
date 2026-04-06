@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Configura los botones de búsqueda rápida (Madrid, Barcelona, etc.)
         iniciarBotonesRapidos();
         
-        // Carga los eventos destacados (Madrid)
+        // Carga los eventos destacados (Madrid) - VERSIÓN AGRUPADA
         if (gridEventos) cargarEventosDestacados(gridEventos);
     }
 
@@ -174,14 +174,19 @@ async function cargarEventosDestacados(grid) {
         return;
     }
 
-    // Toma solo los primeros 4 eventos
-    const eventos = datos._embedded.events.slice(0, 4);
+    // Tomamos más eventos para que al agrupar queden varios días distintos
+    const eventos = datos._embedded.events.slice(0, 12);
     
-    // Renderiza las tarjetas
-    if (typeof crearCardEvento === 'function') {
+    // =============================================================
+    // VERSIÓN AGRUPADA POR DÍA - Renderiza los eventos agrupados
+    // =============================================================
+    if (typeof renderizarEventosAgrupados === 'function') {
+        renderizarEventosAgrupados(grid, eventos);
+    } else if (typeof crearCardEvento === 'function') {
+        // Fallback: si no existe la función agrupada, usa la original
         grid.innerHTML = eventos.map(crearCardEvento).join('');
     } else {
-        grid.innerHTML = '<p>Error: Función crearCardEvento no disponible</p>';
+        grid.innerHTML = '<p>Error: Función de renderizado no disponible</p>';
     }
 }
 
@@ -213,11 +218,16 @@ async function cargarResultados(grid, ciudad) {
         guardarEventosOriginales(eventos);
     }
 
-    // Renderiza las tarjetas
-    if (typeof crearCardEvento === 'function') {
+    // =============================================================
+    // VERSIÓN AGRUPADA POR DÍA - Renderiza los eventos agrupados
+    // =============================================================
+    if (typeof renderizarEventosAgrupados === 'function') {
+        renderizarEventosAgrupados(grid, eventos);
+    } else if (typeof crearCardEvento === 'function') {
+        // Fallback: si no existe la función agrupada, usa la original
         grid.innerHTML = eventos.map(crearCardEvento).join('');
     } else {
-        grid.innerHTML = '<p>Error: Función crearCardEvento no disponible</p>';
+        grid.innerHTML = '<p>Error: Función de renderizado no disponible</p>';
     }
 }
 
